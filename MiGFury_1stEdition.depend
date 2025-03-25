@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1742345445 source:e:\c\migfury\migfury_1stedition\createwindow.cpp
+	<iostream>
+	<SDL.h>
+	<stdio.h>
+
+1742353787 source:e:\c\migfury\migfury_1stedition\main.cpp
+	<iostream>
+	<SDL.h>
+	<stdio.h>
+
+1742368880 source:e:\c\migfury_1stedition\main.cpp
+	<iostream>
+	<SDL.h>
+	<stdio.h>
+
+1742863796 source:e:\c\migfury_1stedition\src\core\engine.cpp
+	"Engine.h"
+
+1742863796 e:\c\migfury_1stedition\src\core\engine.h
+	<iostream>
+
