@@ -9,14 +9,65 @@
 	<SDL.h>
 	<stdio.h>
 
-1742368880 source:e:\c\migfury_1stedition\main.cpp
-	<iostream>
-	<SDL.h>
-	<stdio.h>
-
-1742863796 source:e:\c\migfury_1stedition\src\core\engine.cpp
+1743424506 source:e:\c\migfury_1stedition\main.cpp
 	"Engine.h"
 
-1742863796 e:\c\migfury_1stedition\src\core\engine.h
+1743424497 source:e:\c\migfury_1stedition\src\core\engine.cpp
+	"Engine.h"
+	"TextureManager.h"
+	"Transform.h"
+
+1743424497 e:\c\migfury_1stedition\src\core\engine.h
+	"SDL.h"
+	"SDL_image.h"
+
+1742882932 e:\c\migfury_1stedition\src\core\game.h
+	"Window.h"
+	"Renderer.h"
+	<SDL.h>
+
+1742882932 source:e:\c\migfury_1stedition\src\core\game.cpp
+	"Game.h"
+	"TextureManager.h"
+	<SDL_image.h>
 	<iostream>
+
+1742882932 source:e:\c\migfury_1stedition\src\core\window.cpp
+	"Window.h"
+
+1742882932 e:\c\migfury_1stedition\src\core\window.h
+	<SDL.h>
+	<iostream>
+
+1742882932 source:e:\c\migfury_1stedition\src\core\renderer.cpp
+	"Renderer.h"
+
+1742882932 e:\c\migfury_1stedition\src\core\renderer.h
+	<SDL.h>
+	<iostream>
+
+1742882239 source:e:\c\migfury_1stedition\src\core\texturemanager.cpp
+	"TextureManager.h"
+	<iostream>
+
+1742882932 e:\c\migfury_1stedition\src\core\texturemanager.h
+	<SDL.h>
+	<SDL_image.h>
+	<map>
+	<string>
+
+1743424497 e:\c\migfury_1stedition\src\graphics\texturemanager.h
+	<string>
+	"SDL.h"
+	<map>
+
+1743424497 e:\c\migfury_1stedition\src\physics\transform.h
+	"Vector2D.h"
+
+1743424497 e:\c\migfury_1stedition\src\physics\vector2d.h
+	<iostream>
+
+1743424497 source:e:\c\migfury_1stedition\src\graphics\texturemanager.cpp
+	"TextureManager.h"
+	"../Core/Engine.h"
 
