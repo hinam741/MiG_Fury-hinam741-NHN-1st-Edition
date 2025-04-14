@@ -12,10 +12,10 @@
 1743424506 source:e:\c\migfury_1stedition\main.cpp
 	"Engine.h"
 
-1743424497 source:e:\c\migfury_1stedition\src\core\engine.cpp
+1744136536 source:e:\c\migfury_1stedition\src\core\engine.cpp
 	"Engine.h"
 	"TextureManager.h"
-	"Transform.h"
+	"Airplane.h"
 
 1743424497 e:\c\migfury_1stedition\src\core\engine.h
 	"SDL.h"
@@ -56,7 +56,7 @@
 	<map>
 	<string>
 
-1743424497 e:\c\migfury_1stedition\src\graphics\texturemanager.h
+1744130869 e:\c\migfury_1stedition\src\graphics\texturemanager.h
 	<string>
 	"SDL.h"
 	<map>
@@ -67,7 +67,35 @@
 1743424497 e:\c\migfury_1stedition\src\physics\vector2d.h
 	<iostream>
 
-1743424497 source:e:\c\migfury_1stedition\src\graphics\texturemanager.cpp
+1744133236 source:e:\c\migfury_1stedition\src\graphics\texturemanager.cpp
 	"TextureManager.h"
 	"../Core/Engine.h"
+
+1744161655 source:e:\c\migfury_1stedition\src\characters\airplane.cpp
+	"Airplane.h"
+	"TextureManager.h"
+	"SDL.h"
+
+1744161655 e:\c\migfury_1stedition\src\characters\airplane.h
+	"Character.h"
+	"Animation.h"
+
+1744133847 e:\c\migfury_1stedition\src\characters\character.h
+	"GameObject.h"
+	<string>
+
+1744134368 e:\c\migfury_1stedition\src\object\gameobject.h
+	<SDL.h>
+	"IObject.h"
+	"Transform.h"
+
+1743436466 e:\c\migfury_1stedition\src\object\iobject.h
+
+1744161752 source:e:\c\migfury_1stedition\src\animation\animation.cpp
+	"Animation.h"
+	"TextureManager.h"
+
+1744160252 e:\c\migfury_1stedition\src\animation\animation.h
+	<string>
+	"SDL.h"
 

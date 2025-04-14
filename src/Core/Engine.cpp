@@ -1,9 +1,11 @@
 //checked
 #include "Engine.h"
 #include "TextureManager.h"
-#include "Transform.h"
+#include "Airplane.h"
 
 Engine* Engine::s_Instance = nullptr;
+Airplane* player = nullptr;
+
 bool Engine::Init()
 {
    if(SDL_Init(SDL_INIT_VIDEO) != 0 && IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG) != 0){
@@ -23,7 +25,8 @@ bool Engine::Init()
     return false;
    }
 
-   TextureManager::GetInstance()->Load("mig21_player", "assets/mig21_player.png");
+   TextureManager::GetInstance()->Load("player", "assets/mig21_pixels_2.png");
+   player = new Airplane(new Properties("player", 100, 200, 224, 48));
 
    Transform tf;
    tf.Log();
@@ -32,6 +35,7 @@ bool Engine::Init()
 
 void Engine::Update()
 {
+    player->Update(0);//(time)
 }
 
 void Engine::Render()
@@ -39,7 +43,7 @@ void Engine::Render()
     SDL_SetRenderDrawColor(m_Renderer, 124, 218, 234, 255); //draw color for window
     SDL_RenderClear(m_Renderer);
 
-    TextureManager::GetInstance()->Draw("mig21_player", 100, 100, 500, 500);
+    player->Draw();
     SDL_RenderPresent(m_Renderer);
 }
 

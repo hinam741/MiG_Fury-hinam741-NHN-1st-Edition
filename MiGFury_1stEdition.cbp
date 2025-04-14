@@ -18,6 +18,8 @@
 					<Add directory="src/Graphics" />
 					<Add directory="src/Object" />
 					<Add directory="src/Physics" />
+					<Add directory="src/Characters" />
+					<Add directory="src/Animation" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -32,6 +34,8 @@
 					<Add directory="src/Graphics" />
 					<Add directory="src/Object" />
 					<Add directory="src/Physics" />
+					<Add directory="src/Characters" />
+					<Add directory="src/Animation" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -43,12 +47,18 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Animation/Animation.cpp" />
+		<Unit filename="src/Animation/Animation.h" />
+		<Unit filename="src/Characters/Airplane.cpp" />
+		<Unit filename="src/Characters/Airplane.h" />
+		<Unit filename="src/Characters/Character.h" />
 		<Unit filename="src/Core/Engine.cpp" />
 		<Unit filename="src/Core/Engine.h" />
 		<Unit filename="src/Graphics/TextureManager.cpp" />
 		<Unit filename="src/Graphics/TextureManager.h" />
 		<Unit filename="src/Object/GameObject.h" />
 		<Unit filename="src/Object/IObject.h" />
+		<Unit filename="src/Physics/RigidBody.h" />
 		<Unit filename="src/Physics/Transform.h" />
 		<Unit filename="src/Physics/Vector2D.h" />
 		<Extensions />
