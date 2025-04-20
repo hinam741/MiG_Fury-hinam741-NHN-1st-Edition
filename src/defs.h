@@ -8,8 +8,12 @@
 #define SCREEN_WIDTH   1280
 #define SCREEN_HEIGHT  720
 
-#define PLAYER_SPEED          4
-#define PLAYER_BULLET_SPEED   20
+#define FPS 60
+
+//định nghĩa bullet
+#define PLAYER_SPEED        4
+#define PLAYER_BULLET_SPEED 20
+#define ALIEN_BULLET_SPEED  8
 
 //định nghĩa tối đa có thể xử lý được 350 phím, tránh tràn mảng
 #define MAX_KEYBOARD_KEYS 350 //gọi lại trong struct app của struct.h
