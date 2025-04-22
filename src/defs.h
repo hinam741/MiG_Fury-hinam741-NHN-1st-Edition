@@ -22,4 +22,6 @@
 #define SIDE_PLAYER 0 //phe ta là 0 f
 #define SIDE_ALIEN  1 //phe địch là 1 t
 
+#define MAX_STARS 500
+
 #endif // DEFS_H

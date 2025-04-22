@@ -3,6 +3,8 @@
 #include "defs.h"
 
 typedef struct Entity Entity;
+typedef struct Explosion Explosion;
+typedef struct Debris    Debris;
 
 //struct xử lý logic và các hàm draw trong vòng lặp chính
 typedef struct
@@ -30,18 +32,53 @@ struct Entity
 	float        dx;
 	float        dy;
 	int          health;
-	int          reload; //theo dõi khả năng bắn của player
+	int          reload; //theo dõi khả năng bắn của player, reload đạn
 	int          side;//khai báo trong defs.h; hoạt động trong stage.cpp
 	SDL_Texture *texture;
-	Entity      *next; //con trỏ đến Entity khác
+	Entity      *next; //con trỏ next đến Entity khác
+};
+
+//struct thông tin về vụ nổ
+struct Explosion
+{
+	float      x;
+	float      y;
+	float      dx;
+	float      dy;
+	int        r, g, b, a;//a là độ trong suốt
+	Explosion *next;
+};
+
+//struct mảnh vỡ
+struct Debris
+{
+	float        x;
+	float        y;
+	float        dx;
+	float        dy;
+	SDL_Rect     rect;
+	SDL_Texture *texture;
+	int          life;
+	Debris      *next;
 };
 
 //struct chứa thông tin máy bay và đạn
 typedef struct
 {
-	Entity fighterHead, *fighterTail;
-	Entity bulletHead, *bulletTail;
+	Entity    fighterHead, *fighterTail;
+	Entity    bulletHead, *bulletTail;
+	Explosion explosionHead, *explosionTail;
+	Debris    debrisHead, *debrisTail;
 } Stage;
+
+//struct các ngôi sao
+typedef struct
+{
+	int x;
+	int y;
+	int speed;
+} Star;
+
 
 
 #endif // STRUCTS_H

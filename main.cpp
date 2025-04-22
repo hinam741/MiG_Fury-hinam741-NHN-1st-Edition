@@ -1,4 +1,4 @@
-#include "src/common.h"
+#include "common.h"
 
 #include "Graphics\draw.h"
 #include "Core\init.h"

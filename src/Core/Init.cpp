@@ -22,23 +22,13 @@ void initSDL(void)
 
 	app.window = SDL_CreateWindow("MiG Fury v1.0.0", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, windowFlags);
 
-	if (!app.window)
-	{
-		printf("Failed to open %d x %d window: %s\n", SCREEN_WIDTH, SCREEN_HEIGHT, SDL_GetError()); // %d: số nguyên; $s: chuỗi ký tự
-		exit(1);
-	}
-
-	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear"); //Thiết lập gợi ý cho SDL làm mượt hình ảnh "linear"
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");//Thiết lập gợi ý cho SDL làm mượt hình ảnh "linear"
 
 	app.renderer = SDL_CreateRenderer(app.window, -1, rendererFlags);
 
-	if (!app.renderer)
-	{
-		printf("Failed to create renderer: %s\n", SDL_GetError());
-		exit(1);
-	}
-
 	IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
+
+	SDL_ShowCursor(0);
 }
 
 void cleanup(void)

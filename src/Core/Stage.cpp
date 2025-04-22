@@ -24,14 +24,29 @@ static void doEnemies(void);
 static void fireAlienBullet(Entity *e);
 static void clipPlayer(void);
 static void resetStage(void);
+static void drawBackground(void);
+static void initStarfield(void);
+static void drawStarfield(void);
+static void doBackground(void);
+static void doStarfield(void);
+static void drawExplosions(void);
+static void doExplosions(void);
+static void addExplosions(int x, int y, int num);
+static void addDebris(Entity *e);
+static void doDebris(void);
+static void drawDebris(void);
 
 static Entity      *player;
 static SDL_Texture *bulletTexture;
 static SDL_Texture *enemyTexture;
 static SDL_Texture *alienBulletTexture;
 static SDL_Texture *playerTexture;
+static SDL_Texture *background;
+static SDL_Texture *explosionTexture;
 static int          enemySpawnTimer;
 static int          stageResetTimer;
+static int          backgroundX;
+static Star         stars[MAX_STARS];
 
 void initStage(void)
 {
@@ -41,11 +56,15 @@ void initStage(void)
 	memset(&stage, 0, sizeof(Stage));
 	stage.fighterTail = &stage.fighterHead;
 	stage.bulletTail = &stage.bulletHead;
+	stage.explosionTail = &stage.explosionHead;
+	stage.debrisTail = &stage.debrisHead;
 
 	bulletTexture = loadTexture("gfx/playerBullet.png");
-	enemyTexture = loadTexture("gfx/b52_enemy-200x200.png");
+	enemyTexture = loadTexture("gfx/b52_enemy-110x110.png");
 	alienBulletTexture = loadTexture("gfx/bossBullet-80x88.png");
-	playerTexture = loadTexture("gfx/mig21_player-150x150.png");
+	playerTexture = loadTexture("gfx/mig21_player-90x90.png");
+	background = loadTexture("gfx/city_background.jpg");
+	explosionTexture = loadTexture("gfx/explosion.png");
 
 	resetStage();
 }
@@ -53,6 +72,8 @@ void initStage(void)
 static void resetStage(void)
 {
 	Entity *e;//duyệt con trỏ e ở ds thực thể
+	Explosion *ex;
+	Debris    *d;
 
 	while (stage.fighterHead.next)//xóa máy bay enemy
 	{
@@ -68,16 +89,34 @@ static void resetStage(void)
 		free(e);
 	}
 
+	while (stage.explosionHead.next)
+	{
+		ex = stage.explosionHead.next;
+		stage.explosionHead.next = ex->next;
+		free(ex);
+	}
+
+	while (stage.debrisHead.next)
+	{
+		d = stage.debrisHead.next;
+		stage.debrisHead.next = d->next;
+		free(d);
+	}
+
 	memset(&stage, 0, sizeof(Stage));//reset toàn bộ dữ liệu trong stage
 	//khôi phục trạng thái ban đầu
 	stage.fighterTail = &stage.fighterHead;
 	stage.bulletTail = &stage.bulletHead;
+	stage.explosionTail = &stage.explosionHead;
+	stage.debrisTail = &stage.debrisHead;
 
 	initPlayer();
 
+	initStarfield(); //khởi tạo cánh đồng sao
+
 	enemySpawnTimer = 0;
 
-	stageResetTimer = FPS * 2;//đặt lại bộ đếm reset màn chơi, trong khoảng 2s thêm hiệu ứng
+	stageResetTimer = FPS * 3;//đặt lại bộ đếm reset màn chơi, trong khoảng 3s thêm hiệu ứng
 }
 
 static void initPlayer()
@@ -96,10 +135,26 @@ static void initPlayer()
 	player->side = SIDE_PLAYER;
 }
 
+//khởi tạo cánh đồng sao
+static void initStarfield(void)
+{
+	int i;
+
+	for (i = 0; i < MAX_STARS; i++)
+	{
+		stars[i].x = rand() % SCREEN_WIDTH;
+		stars[i].y = rand() % SCREEN_HEIGHT;
+		stars[i].speed = 1 + rand() % 8;
+	}
+}
 
 //logic của trò chơi
 static void logic(void)
 {
+    doBackground();
+
+	doStarfield();
+
 	doPlayer(); //liên kết với con trỏ logic của app.delegate
 
 	doEnemies();
@@ -108,6 +163,10 @@ static void logic(void)
 
 	doBullets();
 
+	doExplosions();
+
+	doDebris();
+
 	spawnEnemies();
 
 	clipPlayer();
@@ -115,6 +174,29 @@ static void logic(void)
 	if (player == NULL && --stageResetTimer <= 0)//kiểm tra người chơi có bị giết ko
 	{
 		resetStage();
+	}
+}
+
+static void doBackground(void)
+{
+	if (--backgroundX < -SCREEN_WIDTH)
+	{
+		backgroundX = 0;
+	}
+}
+
+static void doStarfield(void)
+{
+	int i;
+
+	for (i = 0; i < MAX_STARS; i++)
+	{
+		stars[i].x -= stars[i].speed; //tạo hiệu ứng trôi ngang
+
+		if (stars[i].x < 0)
+		{
+			stars[i].x = SCREEN_WIDTH + stars[i].x;//nếu ngôi sao ra khỏi màn trái thì đưa nó về lại màn phải; đặt thêm tọa độ của star để stars k bị xuất hiện cùng 1 chỗ
+		}
 	}
 }
 
@@ -300,6 +382,10 @@ static int bulletHitFighter(Entity *b)
 			b->health = 0;//bullet
 			e->health = 0;//enemy
 
+			addExplosions(e->x, e->y, 32);
+
+			addDebris(e);
+
 			return 1;//trả về 1 nếu trúng mục tiêu true
 		}
 	}
@@ -366,9 +452,152 @@ static void clipPlayer(void)
 	}
 }
 
+static void doExplosions(void)
+{
+	Explosion *e, *prev;
+
+	prev = &stage.explosionHead;
+
+	for (e = stage.explosionHead.next; e != NULL; e = e->next)
+	{
+		e->x += e->dx;
+		e->y += e->dy;
+
+		if (--e->a <= 0)//giảm a của e (giảm tần suất vụ nổ)
+		{
+			if (e == stage.explosionTail)
+			{
+				stage.explosionTail = prev;
+			}
+
+			prev->next = e->next;
+			free(e);
+			e = prev;
+		}
+
+		prev = e;
+	}
+}
+
+static void doDebris(void)
+{
+	Debris *d, *prev;
+
+	prev = &stage.debrisHead;
+
+	for (d = stage.debrisHead.next; d != NULL; d = d->next)
+	{
+		d->x += d->dx;
+		d->y += d->dy;
+
+		d->dy += 0.5;//tăng vận tốc rơi
+
+		if (--d->life <= 0)
+		{
+			if (d == stage.debrisTail)
+			{
+				stage.debrisTail = prev;
+			}
+
+			prev->next = d->next;
+			free(d);
+			d = prev;
+		}
+
+		prev = d;
+	}
+}
+
+static void addExplosions(int x, int y, int num)
+{
+	Explosion *e;
+	int        i;
+
+	for (i = 0; i < num; i++)
+	{
+		e = (Explosion*)malloc(sizeof(Explosion));//cấp phát bộ nhớ
+		memset(e, 0, sizeof(Explosion));//gán các byte trong struct = 0 đảm bảo ko có giá trị rác
+		stage.explosionTail->next = e;
+		stage.explosionTail = e;
+
+		e->x = x + (rand() % 32) - (rand() % 32);//chọn vị trí xung quanh điểm x,y (dao động trong 31px)
+		e->y = y + (rand() % 32) - (rand() % 32);
+		e->dx = (rand() % 10) - (rand() % 10);//lấy vận tốc ngẫu nhiên trong đoạn -9;9
+		e->dy = (rand() % 10) - (rand() % 10);
+
+		e->dx /= 10;
+		e->dy /= 10;
+
+		switch (rand() % 4)//chọn màu ngẫu nhiên
+		{
+			case 0://đỏ, cháy mạnh
+				e->r = 255;
+				break;
+
+			case 1://cam, cháy nhẹ hơn
+				e->r = 255;
+				e->g = 128;
+				break;
+
+			case 2://vàng, sáng nổ
+				e->r = 255;
+				e->g = 255;
+				break;
+
+			default://sáng trắng
+				e->r = 255;
+				e->g = 255;
+				e->b = 255;
+				break;
+		}
+
+		e->a = rand() % FPS * 3;//giá trị tuổi thọ của vụ nổ
+	}
+}
+
+static void addDebris(Entity *e)//phá vỡ máy bay thành nhiều mảnh
+{
+	Debris *d;
+	int     x, y, w, h;//chia hình thành 4 phần
+
+	w = e->w / 2;
+	h = e->h / 2;
+
+	for (y = 0; y <= h; y += h)
+	{
+		for (x = 0; x <= w; x += w)
+		{
+			d = (Debris*)malloc(sizeof(Debris));
+			memset(d, 0, sizeof(Debris));
+			stage.debrisTail->next = d;
+			stage.debrisTail = d;
+
+			d->x = e->x + e->w / 2;//vị trí ban đầu là tâm của thực thể (x là góc bên trái cùng + w/2)
+			d->y = e->y + e->h / 2;
+			d->dx = (rand() % 5) - (rand() % 5);// v ngẫu nhiên từ -4;4
+			d->dy = -(5 + (rand() % 12));// v dọc từ -5;-16
+			d->life = FPS * 2;
+			d->texture = e->texture;
+
+			d->rect.x = x;//hiển thị mảnh vỡ theo tọa độ
+			d->rect.y = y;
+			d->rect.w = w;
+			d->rect.h = h;
+		}
+	}
+}
+
 static void draw(void)
 {
+	drawBackground();
+
+	drawStarfield();
+
 	drawFighters();
+
+	drawDebris();
+
+	drawExplosions();
 
 	drawBullets();
 }
@@ -391,4 +620,62 @@ static void drawBullets(void)
 	{
 		blit(b->texture, b->x, b->y);
 	}
+}
+
+static void drawStarfield(void)
+{
+	int i, c;//color
+
+	for (i = 0; i < MAX_STARS; i++)
+	{
+		c = 32 * stars[i].speed;//màu càng sáng thì sao bay càng nhanh
+
+		SDL_SetRenderDrawColor(app.renderer, c, c, c, 255);//c,c,c tạo ra màu xám; 255 là đậm đặc
+
+		SDL_RenderDrawLine(app.renderer, stars[i].x, stars[i].y, stars[i].x + 3, stars[i].y);//điểm kết thúc kéo dài thêm 3px, giữ nguyên chiều cao
+	}
+}
+
+static void drawBackground(void)
+{
+	SDL_Rect dest;//đích vẽ
+	int      x;
+
+	for (x = backgroundX; x < SCREEN_WIDTH; x += SCREEN_WIDTH)//định nghĩa backgroundX ở đầu file
+	{
+		dest.x = x;
+		dest.y = 0;
+		dest.w = SCREEN_WIDTH;//kéo nền ra
+		dest.h = SCREEN_HEIGHT;
+
+		SDL_RenderCopy(app.renderer, background, NULL, &dest);// null vẽ toàn bộ k cắt, dest vẽ lên toàn bộ khu vực được định nghĩa
+	}
+}
+
+static void drawDebris(void)
+{
+	Debris *d;
+
+	for (d = stage.debrisHead.next; d != NULL; d = d->next)
+	{
+		blitRect(d->texture, &d->rect, d->x, d->y);
+	}
+}
+
+static void drawExplosions(void)
+{
+	Explosion *e;
+
+	SDL_SetRenderDrawBlendMode(app.renderer, SDL_BLENDMODE_ADD);//hàm hòa trộn cộng, làm sáng lên các lệnh vẽ cơ bản, vẽ trực tiếp bằng màu
+	SDL_SetTextureBlendMode(explosionTexture, SDL_BLENDMODE_ADD);//trộn màu với các texture, vẽ bằng texture
+
+	for (e = stage.explosionHead.next; e != NULL; e = e->next)
+	{
+		SDL_SetTextureColorMod(explosionTexture, e->r, e->g, e->b);//đặt màu explosionTexture là màu cam
+		SDL_SetTextureAlphaMod(explosionTexture, e->a);//điều chỉnh độ trong suốt cho mờ dần theo thời gian
+
+		blit(explosionTexture, e->x, e->y);
+	}
+
+	SDL_SetRenderDrawBlendMode(app.renderer, SDL_BLENDMODE_NONE);
 }

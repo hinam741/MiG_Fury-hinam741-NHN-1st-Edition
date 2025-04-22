@@ -9,8 +9,8 @@
 	<SDL.h>
 	<stdio.h>
 
-1745071847 source:e:\c\migfury_1stedition\main.cpp
-	"src/common.h"
+1745341541 source:e:\c\migfury_1stedition\main.cpp
+	"common.h"
 	"Graphics\draw.h"
 	"Core\init.h"
 	"Core\input.h"
@@ -163,12 +163,12 @@
 	"core\structs.h"
 	"defs.h"
 
-1745060821 e:\c\migfury_1stedition\src\core\structs.h
+1745341650 e:\c\migfury_1stedition\src\core\structs.h
 	"defs.h"
 
-1745131156 e:\c\migfury_1stedition\src\defs.h
+1745341949 e:\c\migfury_1stedition\src\defs.h
 
-1744994554 e:\c\migfury_1stedition\src\graphics\draw.h
+1745341097 e:\c\migfury_1stedition\src\graphics\draw.h
 
 1744988328 e:\c\migfury_1stedition\src\core\init.h
 
@@ -178,7 +178,7 @@
 
 1745046005 e:\c\migfury_1stedition\src\core\stage.h
 
-1745071923 source:e:\c\migfury_1stedition\src\core\init.cpp
+1745341466 source:e:\c\migfury_1stedition\src\core\init.cpp
 	<SDL_image.h>
 	"common.h"
 	"init.h"
@@ -187,7 +187,7 @@
 	"common.h"
 	"input.h"
 
-1745131354 source:e:\c\migfury_1stedition\src\core\stage.cpp
+1745341120 source:e:\c\migfury_1stedition\src\core\stage.cpp
 	"common.h"
 	"Graphics\draw.h"
 	"stage.h"
@@ -195,7 +195,7 @@
 
 1745131304 e:\c\migfury_1stedition\src\physics\util.h
 
-1745071923 source:e:\c\migfury_1stedition\src\graphics\draw.cpp
+1745341095 source:e:\c\migfury_1stedition\src\graphics\draw.cpp
 	<SDL_image.h>
 	"common.h"
 	"draw.h"
