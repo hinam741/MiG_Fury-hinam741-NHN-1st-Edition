@@ -3,6 +3,7 @@
 #include "Graphics\draw.h"
 #include "sound.h"
 #include "stage.h"
+#include "text.h"
 #include "util.h"
 
 extern App   app;
@@ -36,6 +37,7 @@ static void addExplosions(int x, int y, int num);
 static void addDebris(Entity *e);
 static void doDebris(void);
 static void drawDebris(void);
+static void drawHud(void);
 
 static Entity      *player;
 static SDL_Texture *bulletTexture;
@@ -48,6 +50,7 @@ static int          enemySpawnTimer;
 static int          stageResetTimer;
 static int          backgroundX;
 static Star         stars[MAX_STARS];
+static int          highscore;
 
 void initStage(void)
 {
@@ -114,6 +117,8 @@ static void resetStage(void)
 	stage.bulletTail = &stage.bulletHead;
 	stage.explosionTail = &stage.explosionHead;
 	stage.debrisTail = &stage.debrisHead;
+
+	stage.score = 0;//tính điểm
 
 	initPlayer();
 
@@ -402,6 +407,10 @@ static int bulletHitFighter(Entity *b)
 			else
 			{
 				playSound(SND_ALIEN_DIE, CH_ANY);//thêm âm thanh, phát nhiều âm thanh nổ cùng lúc, chọn kênh rảnh bất kỳ
+
+				stage.score++;
+
+				highscore = MAX(stage.score, highscore);
 			}
 
 			return 1;//trả về 1 nếu trúng mục tiêu true
@@ -622,6 +631,8 @@ static void draw(void)
 	drawExplosions();
 
 	drawBullets();
+
+	drawHud();
 }
 
 static void drawFighters(void)
@@ -700,4 +711,18 @@ static void drawExplosions(void)
 	}
 
 	SDL_SetRenderDrawBlendMode(app.renderer, SDL_BLENDMODE_NONE);
+}
+
+static void drawHud(void)
+{
+	drawText(10, 10, 255, 255, 255, "SCORE: %03d", stage.score);//vẽ điểm hiện tại màu trắng, bên trái màn hình (x,y,r,g,b,định dạng điểm số 3 chữ số
+
+	if (stage.score > 0 && stage.score == highscore)
+	{
+		drawText(1020, 10, 0, 255, 0, "HIGHSCORE: %03d", highscore);//vẽ điểm highscore, màu xanh lá cây ; %03 giá trị thay thế phải là sô nguyên (%), 0 là các số trước số cần tìm nếu độ dài ko đủ bằng 3 kí tự, độ dài là 3 kí tự
+	}
+	else
+	{
+		drawText(1020, 10, 255, 255, 255, "HIGHSCORE: %03d", highscore);//nếu ko phải highscore thì vẽ màu trắng
+	}
 }

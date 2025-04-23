@@ -8,6 +8,9 @@
 #define SCREEN_WIDTH   1280
 #define SCREEN_HEIGHT  720
 
+//định nghĩa độ dài ký tự tối đa
+#define MAX_LINE_LENGTH 1024
+
 #define FPS 60
 
 //định nghĩa bullet

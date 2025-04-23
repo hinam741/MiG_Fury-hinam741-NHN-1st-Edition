@@ -69,6 +69,7 @@ typedef struct
 	Entity    bulletHead, *bulletTail;
 	Explosion explosionHead, *explosionTail;
 	Debris    debrisHead, *debrisTail;
+	int       score; //tính điểm
 } Stage;
 
 //struct các ngôi sao

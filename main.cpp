@@ -6,6 +6,7 @@
 #include "main.h"
 #include "sound.h"
 #include "Core\Stage.h"
+#include "text.h"
 
 App   app;//biến toàn cục chưa trạng thái chung
 Stage stage;//biến toàn cục chứ thực thể, logic
@@ -28,6 +29,8 @@ int main(int argc, char *argv[])
 	atexit(cleanup);
 
 	initSounds();
+
+	initFonts();
 
 	initStage();
 

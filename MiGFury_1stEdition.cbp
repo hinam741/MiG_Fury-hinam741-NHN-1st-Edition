@@ -63,6 +63,8 @@
 		<Unit filename="src/Core/structs.h" />
 		<Unit filename="src/Graphics/draw.cpp" />
 		<Unit filename="src/Graphics/draw.h" />
+		<Unit filename="src/Graphics/text.cpp" />
+		<Unit filename="src/Graphics/text.h" />
 		<Unit filename="src/Physics/util.cpp" />
 		<Unit filename="src/Physics/util.h" />
 		<Unit filename="src/common.h" />
