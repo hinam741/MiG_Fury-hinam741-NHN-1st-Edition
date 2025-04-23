@@ -1,6 +1,7 @@
  //Khởi tạo logic trò chơi
 #include "common.h"
 #include "Graphics\draw.h"
+#include "sound.h"
 #include "stage.h"
 #include "util.h"
 
@@ -65,6 +66,10 @@ void initStage(void)
 	playerTexture = loadTexture("gfx/mig21_player-90x90.png");
 	background = loadTexture("gfx/city_background.jpg");
 	explosionTexture = loadTexture("gfx/explosion.png");
+
+	loadMusic("music/Air Attack HD - White Storm Dam Music - 1.5x.mp3");
+
+	playMusic(1);
 
 	resetStage();
 }
@@ -233,6 +238,8 @@ static void doPlayer(void)
 
 		if (app.keyboard[SDL_SCANCODE_LCTRL] && player->reload <= 0)
 		{
+			playSound(SND_PLAYER_FIRE, CH_PLAYER);//thêm âm thanh
+
 			fireBullet();
 		}
 	}
@@ -273,6 +280,8 @@ static void doEnemies(void)
 		if (e != player && player != NULL && --e->reload <= 0)//bỏ qua người chơi; đảm bảo người chơi != null; giảm reload (đếm ngược giữa các lần bắn) kiểm tra đã đến lúc bắn chưa
 		{
 			fireAlienBullet(e);//nếu mọi thứ đúng thì gọi hàm
+
+			playSound(SND_ALIEN_FIRE, CH_ALIEN_FIRE);//thêm âm thanh
 		}
 	}
 }
@@ -386,6 +395,15 @@ static int bulletHitFighter(Entity *b)
 
 			addDebris(e);
 
+			if (e == player)
+			{
+				playSound(SND_PLAYER_DIE, CH_PLAYER);//thêm âm thanh
+			}
+			else
+			{
+				playSound(SND_ALIEN_DIE, CH_ANY);//thêm âm thanh, phát nhiều âm thanh nổ cùng lúc, chọn kênh rảnh bất kỳ
+			}
+
 			return 1;//trả về 1 nếu trúng mục tiêu true
 		}
 	}
@@ -402,6 +420,10 @@ static void spawnEnemies(void)
 		//nếu hết timer thì tạo enemy mới
 		enemy = (Entity*)malloc(sizeof(Entity));
 		memset(enemy, 0, sizeof(Entity));
+
+		//khi enemy xuất hiện thì thêm âm thanh
+		//playSound(SND_ALIEN_APPEAR, CH_ALIEN);
+
 		//reset enemy
 		stage.fighterTail->next = enemy;
 		stage.fighterTail = enemy;

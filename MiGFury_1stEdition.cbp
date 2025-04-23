@@ -58,6 +58,8 @@
 		<Unit filename="src/Core/Stage.h" />
 		<Unit filename="src/Core/input.cpp" />
 		<Unit filename="src/Core/input.h" />
+		<Unit filename="src/Core/sound.cpp" />
+		<Unit filename="src/Core/sound.h" />
 		<Unit filename="src/Core/structs.h" />
 		<Unit filename="src/Graphics/draw.cpp" />
 		<Unit filename="src/Graphics/draw.h" />

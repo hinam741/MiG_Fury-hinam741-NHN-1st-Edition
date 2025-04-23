@@ -4,6 +4,7 @@
 #include "Core\init.h"
 #include "Core\input.h"
 #include "main.h"
+#include "sound.h"
 #include "Core\Stage.h"
 
 App   app;//biến toàn cục chưa trạng thái chung
@@ -25,6 +26,8 @@ int main(int argc, char *argv[])
 
 	//gọi hàm cleanup sau khi kết thúc
 	atexit(cleanup);
+
+	initSounds();
 
 	initStage();
 

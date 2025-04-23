@@ -1,4 +1,5 @@
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 
 #include "common.h"
 
@@ -19,6 +20,14 @@ void initSDL(void)
 		printf("Couldn't initialize SDL: %s\n", SDL_GetError());
 		exit(1);
 	}
+
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1)//hàm gọi âm thanh (tần số, định dạng, kênh, chunksize)
+	{
+		printf("Couldn't initialize SDL Mixer\n");
+		exit(1);
+	}
+
+	Mix_AllocateChannels(MAX_SND_CHANNELS);//phát 8 hiệu ứng âm thanh cùng lúc (def là 8)
 
 	app.window = SDL_CreateWindow("MiG Fury v1.0.0", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, windowFlags);
 

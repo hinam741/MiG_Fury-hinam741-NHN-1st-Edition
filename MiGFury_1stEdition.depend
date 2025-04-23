@@ -166,7 +166,7 @@
 1745341650 e:\c\migfury_1stedition\src\core\structs.h
 	"defs.h"
 
-1745341949 e:\c\migfury_1stedition\src\defs.h
+1745377315 e:\c\migfury_1stedition\src\defs.h
 
 1745341097 e:\c\migfury_1stedition\src\graphics\draw.h
 
@@ -178,8 +178,9 @@
 
 1745046005 e:\c\migfury_1stedition\src\core\stage.h
 
-1745341466 source:e:\c\migfury_1stedition\src\core\init.cpp
+1745377553 source:e:\c\migfury_1stedition\src\core\init.cpp
 	<SDL_image.h>
+	<SDL_mixer.h>
 	"common.h"
 	"init.h"
 
@@ -187,9 +188,10 @@
 	"common.h"
 	"input.h"
 
-1745341120 source:e:\c\migfury_1stedition\src\core\stage.cpp
+1745377669 source:e:\c\migfury_1stedition\src\core\stage.cpp
 	"common.h"
 	"Graphics\draw.h"
+	"sound.h"
 	"stage.h"
 	"util.h"
 
@@ -203,4 +205,11 @@
 1745131304 source:e:\c\migfury_1stedition\src\physics\util.cpp
 	"common.h"
 	"util.h"
+
+1745377631 source:e:\c\migfury_1stedition\src\core\sound.cpp
+	<SDL_mixer.h>
+	"common.h"
+	"sound.h"
+
+1745377631 e:\c\migfury_1stedition\src\core\sound.h
 

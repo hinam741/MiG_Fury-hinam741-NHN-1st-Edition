@@ -24,4 +24,24 @@
 
 #define MAX_STARS 500
 
+#define MAX_SND_CHANNELS 8//phân 8 kênh hiệu ứng âm thanh
+
+enum//ch_ kênh phát âm thanh
+{
+	CH_ANY = -1,
+	CH_PLAYER,
+	CH_ALIEN,
+	CH_ALIEN_FIRE
+};
+
+enum//snd_ hiệu ứng âm thanh
+{
+	SND_PLAYER_FIRE,
+	SND_ALIEN_FIRE,
+	SND_PLAYER_DIE,
+	SND_ALIEN_DIE,
+	SND_ALIEN_APPEAR,
+	SND_MAX
+};
+
 #endif // DEFS_H
