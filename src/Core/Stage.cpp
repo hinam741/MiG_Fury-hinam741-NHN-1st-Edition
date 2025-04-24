@@ -1,5 +1,6 @@
  //Khởi tạo logic trò chơi
 #include "common.h"
+
 #include "Graphics\draw.h"
 #include "sound.h"
 #include "stage.h"
@@ -38,6 +39,9 @@ static void addDebris(Entity *e);
 static void doDebris(void);
 static void drawDebris(void);
 static void drawHud(void);
+static void doPointsPods(void);
+static void drawPointsPods(void);
+static void addPointsPod(int x, int y);
 
 static Entity      *player;
 static SDL_Texture *bulletTexture;
@@ -46,6 +50,7 @@ static SDL_Texture *alienBulletTexture;
 static SDL_Texture *playerTexture;
 static SDL_Texture *background;
 static SDL_Texture *explosionTexture;
+static SDL_Texture *pointsTexture;
 static int          enemySpawnTimer;
 static int          stageResetTimer;
 static int          backgroundX;
@@ -69,6 +74,7 @@ void initStage(void)
 	playerTexture = loadTexture("gfx/mig21_player-90x90.png");
 	background = loadTexture("gfx/city_background.jpg");
 	explosionTexture = loadTexture("gfx/explosion.png");
+	pointsTexture = loadTexture("gfx/points.png");
 
 	loadMusic("music/Air Attack HD - White Storm Dam Music - 1.5x.mp3");
 
@@ -111,12 +117,20 @@ static void resetStage(void)
 		free(d);
 	}
 
+	while (stage.pointsHead.next)
+	{
+		e = stage.pointsHead.next;
+		stage.pointsHead.next = e->next;
+		free(e);
+	}
+
 	memset(&stage, 0, sizeof(Stage));//reset toàn bộ dữ liệu trong stage
 	//khôi phục trạng thái ban đầu
 	stage.fighterTail = &stage.fighterHead;
 	stage.bulletTail = &stage.bulletHead;
 	stage.explosionTail = &stage.explosionHead;
 	stage.debrisTail = &stage.debrisHead;
+	stage.pointsTail = &stage.pointsHead;
 
 	stage.score = 0;//tính điểm
 
@@ -176,6 +190,8 @@ static void logic(void)
 	doExplosions();
 
 	doDebris();
+
+	doPointsPods();
 
 	spawnEnemies();
 
@@ -406,11 +422,9 @@ static int bulletHitFighter(Entity *b)
 			}
 			else
 			{
+				addPointsPod(e->x + e->w / 2, e->y + e->h / 2);
+
 				playSound(SND_ALIEN_DIE, CH_ANY);//thêm âm thanh, phát nhiều âm thanh nổ cùng lúc, chọn kênh rảnh bất kỳ
-
-				stage.score++;
-
-				highscore = MAX(stage.score, highscore);
 			}
 
 			return 1;//trả về 1 nếu trúng mục tiêu true
@@ -539,6 +553,68 @@ static void doDebris(void)
 	}
 }
 
+static void doPointsPods(void)
+{
+	Entity *e, *prev;
+
+	prev = &stage.pointsHead;
+
+	for (e = stage.pointsHead.next; e != NULL; e = e->next)
+	{
+		if (e->x < 0)//làm pod nảy lên, nếu x ra khỏi màn hình
+		{
+			e->x = 0;
+			e->dx = -e->dx;
+		}
+
+		if (e->x + e->w > SCREEN_WIDTH)
+		{
+			e->x = SCREEN_WIDTH - e->w;
+			e->dx = -e->dx;
+		}
+
+		if (e->y < 0)
+		{
+			e->y = 0;
+			e->dy = -e->dy;
+		}
+
+		if (e->y + e->h > SCREEN_HEIGHT)
+		{
+			e->y = SCREEN_HEIGHT - e->h;
+			e->dy = -e->dy;
+		}
+
+		e->x += e->dx;
+		e->y += e->dy;
+
+		if (player != NULL && collision(e->x, e->y, e->w, e->h, player->x, player->y, player->w, player->h))//nếu va chạm với player
+		{
+			e->health = 0;
+
+			stage.score++;
+
+			highscore = MAX(stage.score, highscore);
+
+			playSound(SND_POINTS, CH_POINTS);
+		}
+
+		if (--e->health <= 0)
+		{
+			if (e == stage.pointsTail)
+			{
+				stage.pointsTail = prev;
+			}
+
+			prev->next = e->next;
+			free(e);
+			e = prev;
+		}
+
+		prev = e;
+	}
+}
+
 static void addExplosions(int x, int y, int num)
 {
 	Explosion *e;
@@ -618,11 +694,35 @@ static void addDebris(Entity *e)//phá vỡ máy bay thành nhiều mảnh
 	}
 }
 
+static void addPointsPod(int x, int y)
+{
+	Entity *e;
+
+	e = (Entity*)malloc(sizeof(Entity));
+	memset(e, 0, sizeof(Entity));
+	stage.pointsTail->next = e;
+	stage.pointsTail = e;
+
+	e->x = x;
+	e->y = y;
+	e->dx = -(rand() % 5);
+	e->dy = (rand() % 5) - (rand() % 5);
+	e->health = FPS * 10;//tồn tại 10s trước khi biến mất
+	e->texture = pointsTexture;
+
+	SDL_QueryTexture(e->texture, NULL, NULL, &e->w, &e->h);
+
+	e->x -= e->w / 2;
+	e->y -= e->h / 2;
+}
+
 static void draw(void)
 {
 	drawBackground();
 
 	drawStarfield();
+
+	drawPointsPods();
 
 	drawFighters();
 
@@ -633,6 +733,16 @@ static void draw(void)
 	drawBullets();
 
 	drawHud();
+}
+
+static void drawPointsPods(void)
+{
+	Entity *e;
+
+	for (e = stage.pointsHead.next; e != NULL; e = e->next)
+	{
+		blit(e->texture, e->x, e->y);
+	}
 }
 
 static void drawFighters(void)

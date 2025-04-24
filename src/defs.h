@@ -34,7 +34,8 @@ enum//ch_ kênh phát âm thanh
 	CH_ANY = -1,
 	CH_PLAYER,
 	CH_ALIEN,
-	CH_ALIEN_FIRE
+	CH_ALIEN_FIRE,
+	CH_POINTS
 };
 
 enum//snd_ hiệu ứng âm thanh
@@ -44,6 +45,7 @@ enum//snd_ hiệu ứng âm thanh
 	SND_PLAYER_DIE,
 	SND_ALIEN_DIE,
 	SND_ALIEN_APPEAR,
+	SND_POINTS,
 	SND_MAX
 };
 
