@@ -422,7 +422,11 @@ static int bulletHitFighter(Entity *b)
 			}
 			else
 			{
-				addPointsPod(e->x + e->w / 2, e->y + e->h / 2);
+				int numPods = 1 + (rand() % 2); // random từ 1 đến 2 pods
+				for (int i = 0; i < numPods; i++)
+                    {
+                        addPointsPod(e->x + e->w / 2, e->y + e->h / 2);
+                    }
 
 				playSound(SND_ALIEN_DIE, CH_ANY);//thêm âm thanh, phát nhiều âm thanh nổ cùng lúc, chọn kênh rảnh bất kỳ
 			}
@@ -465,8 +469,14 @@ static void spawnEnemies(void)
 		//đặt thời gian cho player đủ tiêu diệt kẻ thù
 		enemy->reload = FPS * (1 + (rand() % 3));
 
-		//thời gian spawn tiếp theo từ 30-90 frame
-		enemySpawnTimer = 30 + (rand() % 60);
+		//độ khó cao
+		//enemySpawnTimer = 30 + (rand() % 60);//thời gian spawn tiếp theo từ 30-90 frame 0.5s -> 1.5s
+
+		//độ khó trung bình
+		enemySpawnTimer = 60 + (rand() % 91); // từ 60 đến 150 frame; 1s -> 2.5s
+
+		//độ khó thấp
+		//enemySpawnTimer = 120 + (rand() % 91); // 120 -> 210 frame = 2s -> 3.5s
 	}
 }
 
