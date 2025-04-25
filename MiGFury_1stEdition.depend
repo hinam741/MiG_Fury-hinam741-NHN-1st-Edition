@@ -9,15 +9,13 @@
 	<SDL.h>
 	<stdio.h>
 
-1745396311 source:e:\c\migfury_1stedition\main.cpp
+1745559262 source:e:\c\migfury_1stedition\main.cpp
 	"common.h"
 	"Graphics\draw.h"
+	"highscores.h"
 	"Core\init.h"
 	"Core\input.h"
 	"main.h"
-	"sound.h"
-	"Core\Stage.h"
-	"text.h"
 
 1744805352 source:e:\c\migfury_1stedition\src\core\engine.cpp
 	"Engine.h"
@@ -165,14 +163,14 @@
 	"core\structs.h"
 	"defs.h"
 
-1745559159 e:\c\migfury_1stedition\src\core\structs.h
+1745580629 e:\c\migfury_1stedition\src\core\structs.h
 	"defs.h"
 
-1745559135 e:\c\migfury_1stedition\src\defs.h
+1745580567 e:\c\migfury_1stedition\src\defs.h
 
 1745341097 e:\c\migfury_1stedition\src\graphics\draw.h
 
-1744988328 e:\c\migfury_1stedition\src\core\init.h
+1745559307 e:\c\migfury_1stedition\src\core\init.h
 
 1744988499 e:\c\migfury_1stedition\src\core\input.h
 
@@ -180,19 +178,25 @@
 
 1745046005 e:\c\migfury_1stedition\src\core\stage.h
 
-1745377553 source:e:\c\migfury_1stedition\src\core\init.cpp
+1745559293 source:e:\c\migfury_1stedition\src\core\init.cpp
 	<SDL_image.h>
 	<SDL_mixer.h>
 	"common.h"
+	"background.h"
+	"highscores.h"
 	"init.h"
+	"sound.h"
+	"text.h"
 
 1745071923 source:e:\c\migfury_1stedition\src\core\input.cpp
 	"common.h"
 	"input.h"
 
-1745496712 source:e:\c\migfury_1stedition\src\core\stage.cpp
+1745559236 source:e:\c\migfury_1stedition\src\core\stage.cpp
 	"common.h"
+	"background.h"
 	"Graphics\draw.h"
+	"highscores.h"
 	"sound.h"
 	"stage.h"
 	"text.h"
@@ -200,7 +204,7 @@
 
 1745131304 e:\c\migfury_1stedition\src\physics\util.h
 
-1745341095 source:e:\c\migfury_1stedition\src\graphics\draw.cpp
+1745559335 source:e:\c\migfury_1stedition\src\graphics\draw.cpp
 	<SDL_image.h>
 	"common.h"
 	"draw.h"
@@ -216,10 +220,26 @@
 
 1745377631 e:\c\migfury_1stedition\src\core\sound.h
 
-1745396230 e:\c\migfury_1stedition\src\graphics\text.h
+1745580592 e:\c\migfury_1stedition\src\graphics\text.h
 
 1745396230 source:e:\c\migfury_1stedition\src\graphics\text.cpp
 	"common.h"
 	"draw.h"
+	"text.h"
+
+1745559217 e:\c\migfury_1stedition\src\core\highscores.h
+
+1745559391 source:e:\c\migfury_1stedition\src\core\background.cpp
+	"common.h"
+	"background.h"
+	"draw.h"
+
+1745559391 e:\c\migfury_1stedition\src\core\background.h
+
+1745559217 source:e:\c\migfury_1stedition\src\core\highscores.cpp
+	"common.h"
+	"background.h"
+	"highscores.h"
+	"stage.h"
 	"text.h"
 

@@ -762,14 +762,14 @@ static void drawExplosions(void)
 
 static void drawHud(void)
 {
-	drawText(10, 10, 255, 255, 255, "SCORE: %03d", stage.score);//vẽ điểm hiện tại màu trắng, bên trái màn hình (x,y,r,g,b,định dạng điểm số 3 chữ số
+	drawText(10, 10, 255, 255, 255, TEXT_LEFT, "SCORE: %03d", stage.score);//vẽ điểm hiện tại màu trắng, bên trái màn hình (x,y,r,g,b,định dạng điểm số 3 chữ số
 
 	if (stage.score < highscores.highscore[0].score)
 	{
-		drawText(1020, 10, 255, 255, 255, "HIGHSCORE: %03d", highscores.highscore[0].score);//vẽ điểm highscore, màu xanh lá cây ; %03 giá trị thay thế phải là sô nguyên (%), 0 là các số trước số cần tìm nếu độ dài ko đủ bằng 3 kí tự, độ dài là 3 kí tự
+		drawText(SCREEN_WIDTH - 10, 10, 255, 255, 255, TEXT_RIGHT, "HIGHSCORE: %03d", highscores.highscore[0].score);//vẽ điểm highscore, màu xanh lá cây ; %03 giá trị thay thế phải là sô nguyên (%), 0 là các số trước số cần tìm nếu độ dài ko đủ bằng 3 kí tự, độ dài là 3 kí tự
 	}
 	else
 	{
-		drawText(1020, 10, 0, 255, 0, "HIGHSCORE: %03d", stage.score);//nếu ko phải highscore thì vẽ màu trắng
+		drawText(SCREEN_WIDTH - 10, 10, 0, 255, 0, TEXT_RIGHT, "HIGHSCORE: %03d", stage.score);//nếu ko phải highscore thì vẽ màu trắng
 	}
 }

@@ -29,6 +29,7 @@ typedef struct
 	Delegate      delegate; //đại diện
 	int           keyboard[MAX_KEYBOARD_KEYS];
 	Texture       textureHead, *textureTail;
+	char inputText[MAX_LINE_LENGTH];
 } App;//biến toàn cục
 
 //struct thực thể
@@ -92,6 +93,7 @@ typedef struct
 
 typedef struct
 {
+	char name[MAX_SCORE_NAME_LENGTH];
 	int recent;
 	int score;
 } Highscore;//cấu trúc điểm

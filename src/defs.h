@@ -13,6 +13,7 @@
 #define SCREEN_HEIGHT  720
 
 //định nghĩa độ dài ký tự tối đa
+#define MAX_SCORE_NAME_LENGTH 16
 #define MAX_NAME_LENGTH 32
 #define MAX_LINE_LENGTH 1024
 
@@ -36,6 +37,9 @@
 
 #define NUM_HIGHSCORES 8
 
+#define GLYPH_HEIGHT 28
+#define GLYPH_WIDTH  18
+
 enum//ch_ kênh phát âm thanh
 {
 	CH_ANY = -1,
@@ -54,6 +58,13 @@ enum//snd_ hiệu ứng âm thanh
 	SND_ALIEN_APPEAR,
 	SND_POINTS,
 	SND_MAX
+};
+
+enum
+{
+	TEXT_LEFT,
+	TEXT_CENTER,
+	TEXT_RIGHT
 };
 
 #endif // DEFS_H

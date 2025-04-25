@@ -14,7 +14,7 @@ void initFonts(void)
 	fontTexture = loadTexture("gfx/font.png");
 }
 
-void drawText(int x, int y, int r, int g, int b, char *format, ...)//định dạng format dùng varargs
+void drawText(int x, int y, int r, int g, int b, int align, char *format, ...)//định dạng format dùng varargs
 {
 	int      i, len, c;
 	SDL_Rect rect;//chỉ định vùng kết cấu càn dùng
@@ -27,6 +27,17 @@ void drawText(int x, int y, int r, int g, int b, char *format, ...)//định d�
 	va_end(args);
 
 	len = strlen(drawTextBuffer);//duyệt độ dài chuỗi
+
+	switch (align)
+	{
+		case TEXT_RIGHT:
+			x -= (len * GLYPH_WIDTH);
+			break;
+
+		case TEXT_CENTER:
+			x -= (len * GLYPH_WIDTH) / 2;
+			break;
+	}
 
 	rect.w = GLYPH_WIDTH;//định nghĩa khung chữ với SDL_Rect
 	rect.h = GLYPH_HEIGHT;
