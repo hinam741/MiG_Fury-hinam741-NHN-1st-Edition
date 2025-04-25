@@ -3,7 +3,11 @@
 
 #include "common.h"
 
+#include "background.h"
+#include "highscores.h"
 #include "init.h"
+#include "sound.h"
+#include "text.h"
 
 extern App app; // Dùng lại biến app đã được khai báo ở file khác
 
@@ -38,6 +42,23 @@ void initSDL(void)
 	IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
 
 	SDL_ShowCursor(0);
+}
+
+void initGame(void)
+{
+	initBackground();
+
+	initStarfield();
+
+	initSounds();
+
+	initFonts();
+
+	initHighscoreTable();
+
+	loadMusic("music/Air Attack HD - White Storm Dam Music - 1.5x.mp3");
+
+	playMusic(1);
 }
 
 void cleanup(void)

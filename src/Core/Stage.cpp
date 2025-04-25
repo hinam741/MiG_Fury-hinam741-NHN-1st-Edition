@@ -1,13 +1,16 @@
  //Khởi tạo logic trò chơi
 #include "common.h"
 
+#include "background.h"
 #include "Graphics\draw.h"
+#include "highscores.h"
 #include "sound.h"
 #include "stage.h"
 #include "text.h"
 #include "util.h"
 
 extern App   app;
+extern Highscores highscores;
 extern Stage stage;
 
 //Khai báo các hàm cần thiết
@@ -22,16 +25,11 @@ static void doBullets(void);
 static void drawFighters(void);
 static void drawBullets(void);
 static void spawnEnemies(void);
-static int  bulletHitFighter(Entity *b);//khi bullet hit địch
+static int  bulletHitFighter(Entity *b);
 static void doEnemies(void);
 static void fireAlienBullet(Entity *e);
 static void clipPlayer(void);
 static void resetStage(void);
-static void drawBackground(void);
-static void initStarfield(void);
-static void drawStarfield(void);
-static void doBackground(void);
-static void doStarfield(void);
 static void drawExplosions(void);
 static void doExplosions(void);
 static void addExplosions(int x, int y, int num);
@@ -48,14 +46,10 @@ static SDL_Texture *bulletTexture;
 static SDL_Texture *enemyTexture;
 static SDL_Texture *alienBulletTexture;
 static SDL_Texture *playerTexture;
-static SDL_Texture *background;
 static SDL_Texture *explosionTexture;
 static SDL_Texture *pointsTexture;
 static int          enemySpawnTimer;
 static int          stageResetTimer;
-static int          backgroundX;
-static Star         stars[MAX_STARS];
-static int          highscore;
 
 void initStage(void)
 {
@@ -67,36 +61,42 @@ void initStage(void)
 	stage.bulletTail = &stage.bulletHead;
 	stage.explosionTail = &stage.explosionHead;
 	stage.debrisTail = &stage.debrisHead;
+	stage.pointsTail = &stage.pointsHead;
 
 	bulletTexture = loadTexture("gfx/playerBullet.png");
-	enemyTexture = loadTexture("gfx/b52_enemy-110x110.png");
-	alienBulletTexture = loadTexture("gfx/bossBullet-80x88.png");
-	playerTexture = loadTexture("gfx/mig21_player-90x90.png");
-	background = loadTexture("gfx/city_background.jpg");
+	enemyTexture = loadTexture("gfx/b52_enemy-75x75.png");
+	alienBulletTexture = loadTexture("gfx/bossBullet-50x56.png");
+	playerTexture = loadTexture("gfx/mig21_player-65x65.png");
 	explosionTexture = loadTexture("gfx/explosion.png");
 	pointsTexture = loadTexture("gfx/points.png");
 
-	loadMusic("music/Air Attack HD - White Storm Dam Music - 1.5x.mp3");
-
-	playMusic(1);
+	memset(app.keyboard, 0, sizeof(int) * MAX_KEYBOARD_KEYS);
 
 	resetStage();
+
+	stage.score = 0;
+
+	initPlayer();
+
+	enemySpawnTimer = 0;
+
+	stageResetTimer = FPS * 3;
 }
 
 static void resetStage(void)
 {
-	Entity *e;//duyệt con trỏ e ở ds thực thể
+	Entity    *e;
 	Explosion *ex;
 	Debris    *d;
 
-	while (stage.fighterHead.next)//xóa máy bay enemy
+	while (stage.fighterHead.next)
 	{
-		e = stage.fighterHead.next;//duyệt từ phần tử đầu tiên sau fighterHead
+		e = stage.fighterHead.next;
 		stage.fighterHead.next = e->next;
 		free(e);
 	}
 
-	while (stage.bulletHead.next)//xóa đạn
+	while (stage.bulletHead.next)
 	{
 		e = stage.bulletHead.next;
 		stage.bulletHead.next = e->next;
@@ -124,23 +124,11 @@ static void resetStage(void)
 		free(e);
 	}
 
-	memset(&stage, 0, sizeof(Stage));//reset toàn bộ dữ liệu trong stage
-	//khôi phục trạng thái ban đầu
 	stage.fighterTail = &stage.fighterHead;
 	stage.bulletTail = &stage.bulletHead;
 	stage.explosionTail = &stage.explosionHead;
 	stage.debrisTail = &stage.debrisHead;
 	stage.pointsTail = &stage.pointsHead;
-
-	stage.score = 0;//tính điểm
-
-	initPlayer();
-
-	initStarfield(); //khởi tạo cánh đồng sao
-
-	enemySpawnTimer = 0;
-
-	stageResetTimer = FPS * 3;//đặt lại bộ đếm reset màn chơi, trong khoảng 3s thêm hiệu ứng
 }
 
 static void initPlayer()
@@ -157,19 +145,6 @@ static void initPlayer()
 	SDL_QueryTexture(player->texture, NULL, NULL, &player->w, &player->h);
 
 	player->side = SIDE_PLAYER;
-}
-
-//khởi tạo cánh đồng sao
-static void initStarfield(void)
-{
-	int i;
-
-	for (i = 0; i < MAX_STARS; i++)
-	{
-		stars[i].x = rand() % SCREEN_WIDTH;
-		stars[i].y = rand() % SCREEN_HEIGHT;
-		stars[i].speed = 1 + rand() % 8;
-	}
 }
 
 //logic của trò chơi
@@ -199,30 +174,9 @@ static void logic(void)
 
 	if (player == NULL && --stageResetTimer <= 0)//kiểm tra người chơi có bị giết ko
 	{
-		resetStage();
-	}
-}
+		addHighscore(stage.score);
 
-static void doBackground(void)
-{
-	if (--backgroundX < -SCREEN_WIDTH)
-	{
-		backgroundX = 0;
-	}
-}
-
-static void doStarfield(void)
-{
-	int i;
-
-	for (i = 0; i < MAX_STARS; i++)
-	{
-		stars[i].x -= stars[i].speed; //tạo hiệu ứng trôi ngang
-
-		if (stars[i].x < 0)
-		{
-			stars[i].x = SCREEN_WIDTH + stars[i].x;//nếu ngôi sao ra khỏi màn trái thì đưa nó về lại màn phải; đặt thêm tọa độ của star để stars k bị xuất hiện cùng 1 chỗ
-		}
+		initHighscores();
 	}
 }
 
@@ -495,9 +449,14 @@ static void clipPlayer(void)
 			player->y = 0;
 		}
 
-		if (player->x > SCREEN_WIDTH / 2)
+		//if (player->x > SCREEN_WIDTH / 2)
+		//{
+			//player->x = SCREEN_WIDTH / 2;
+		//}
+
+		if (player->x > SCREEN_WIDTH - 3 * player->w)
 		{
-			player->x = SCREEN_WIDTH / 2;
+			player->x = SCREEN_WIDTH - 3 * player->w;
 		}
 
 		if (player->y > SCREEN_HEIGHT - player->h)
@@ -603,8 +562,6 @@ static void doPointsPods(void)
 			e->health = 0;
 
 			stage.score++;
-
-			highscore = MAX(stage.score, highscore);
 
 			playSound(SND_POINTS, CH_POINTS);
 		}
@@ -775,36 +732,6 @@ static void drawBullets(void)
 	}
 }
 
-static void drawStarfield(void)
-{
-	int i, c;//color
-
-	for (i = 0; i < MAX_STARS; i++)
-	{
-		c = 32 * stars[i].speed;//màu càng sáng thì sao bay càng nhanh
-
-		SDL_SetRenderDrawColor(app.renderer, c, c, c, 255);//c,c,c tạo ra màu xám; 255 là đậm đặc
-
-		SDL_RenderDrawLine(app.renderer, stars[i].x, stars[i].y, stars[i].x + 3, stars[i].y);//điểm kết thúc kéo dài thêm 3px, giữ nguyên chiều cao
-	}
-}
-
-static void drawBackground(void)
-{
-	SDL_Rect dest;//đích vẽ
-	int      x;
-
-	for (x = backgroundX; x < SCREEN_WIDTH; x += SCREEN_WIDTH)//định nghĩa backgroundX ở đầu file
-	{
-		dest.x = x;
-		dest.y = 0;
-		dest.w = SCREEN_WIDTH;//kéo nền ra
-		dest.h = SCREEN_HEIGHT;
-
-		SDL_RenderCopy(app.renderer, background, NULL, &dest);// null vẽ toàn bộ k cắt, dest vẽ lên toàn bộ khu vực được định nghĩa
-	}
-}
-
 static void drawDebris(void)
 {
 	Debris *d;
@@ -837,12 +764,12 @@ static void drawHud(void)
 {
 	drawText(10, 10, 255, 255, 255, "SCORE: %03d", stage.score);//vẽ điểm hiện tại màu trắng, bên trái màn hình (x,y,r,g,b,định dạng điểm số 3 chữ số
 
-	if (stage.score > 0 && stage.score == highscore)
+	if (stage.score < highscores.highscore[0].score)
 	{
-		drawText(1020, 10, 0, 255, 0, "HIGHSCORE: %03d", highscore);//vẽ điểm highscore, màu xanh lá cây ; %03 giá trị thay thế phải là sô nguyên (%), 0 là các số trước số cần tìm nếu độ dài ko đủ bằng 3 kí tự, độ dài là 3 kí tự
+		drawText(1020, 10, 255, 255, 255, "HIGHSCORE: %03d", highscores.highscore[0].score);//vẽ điểm highscore, màu xanh lá cây ; %03 giá trị thay thế phải là sô nguyên (%), 0 là các số trước số cần tìm nếu độ dài ko đủ bằng 3 kí tự, độ dài là 3 kí tự
 	}
 	else
 	{
-		drawText(1020, 10, 255, 255, 255, "HIGHSCORE: %03d", highscore);//nếu ko phải highscore thì vẽ màu trắng
+		drawText(1020, 10, 0, 255, 0, "HIGHSCORE: %03d", stage.score);//nếu ko phải highscore thì vẽ màu trắng
 	}
 }

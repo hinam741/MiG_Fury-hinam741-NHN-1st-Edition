@@ -56,6 +56,10 @@
 		<Unit filename="src/Core/Init.h" />
 		<Unit filename="src/Core/Stage.cpp" />
 		<Unit filename="src/Core/Stage.h" />
+		<Unit filename="src/Core/background.cpp" />
+		<Unit filename="src/Core/background.h" />
+		<Unit filename="src/Core/highscores.cpp" />
+		<Unit filename="src/Core/highscores.h" />
 		<Unit filename="src/Core/input.cpp" />
 		<Unit filename="src/Core/input.h" />
 		<Unit filename="src/Core/sound.cpp" />

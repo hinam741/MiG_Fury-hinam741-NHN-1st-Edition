@@ -3,12 +3,17 @@
 
 #define MIN(a, b) (((a) < (b)) ? (a) : (b))
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
+//macro tránh lỗi chuỗi kết thúc với null
+#define STRNCPY(dest, src, n) \
+	strncpy(dest, src, n);    \
+	dest[n - 1] = '\0'
 
 //định nghĩa về chiều dài và rộng của screen
 #define SCREEN_WIDTH   1280
 #define SCREEN_HEIGHT  720
 
 //định nghĩa độ dài ký tự tối đa
+#define MAX_NAME_LENGTH 32
 #define MAX_LINE_LENGTH 1024
 
 #define FPS 60
@@ -28,6 +33,8 @@
 #define MAX_STARS 500
 
 #define MAX_SND_CHANNELS 8//phân 8 kênh hiệu ứng âm thanh
+
+#define NUM_HIGHSCORES 8
 
 enum//ch_ kênh phát âm thanh
 {

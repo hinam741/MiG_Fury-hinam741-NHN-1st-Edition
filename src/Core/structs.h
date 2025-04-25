@@ -5,6 +5,7 @@
 typedef struct Entity Entity;
 typedef struct Explosion Explosion;
 typedef struct Debris    Debris;
+typedef struct Texture   Texture;
 
 //struct xử lý logic và các hàm draw trong vòng lặp chính
 typedef struct
@@ -13,6 +14,13 @@ typedef struct
 	void (*draw)(void);
 } Delegate;
 
+struct Texture
+{
+	char         name[MAX_NAME_LENGTH];
+	SDL_Texture *texture;
+	Texture     *next;
+};
+
 //struct vẽ, xử lý độ phân giải, window, keyboard
 typedef struct
 {
@@ -20,6 +28,7 @@ typedef struct
 	SDL_Window   *window;
 	Delegate      delegate; //đại diện
 	int           keyboard[MAX_KEYBOARD_KEYS];
+	Texture       textureHead, *textureTail;
 } App;//biến toàn cục
 
 //struct thực thể
@@ -81,6 +90,15 @@ typedef struct
 	int speed;
 } Star;
 
+typedef struct
+{
+	int recent;
+	int score;
+} Highscore;//cấu trúc điểm
 
+typedef struct
+{
+	Highscore highscore[NUM_HIGHSCORES];
+} Highscores;//lưu mảng điểm cao
 
 #endif // STRUCTS_H

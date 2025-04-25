@@ -1,14 +1,13 @@
 #include "common.h"
 
 #include "Graphics\draw.h"
+#include "highscores.h"
 #include "Core\init.h"
 #include "Core\input.h"
 #include "main.h"
-#include "sound.h"
-#include "Core\Stage.h"
-#include "text.h"
 
 App   app;//biến toàn cục chưa trạng thái chung
+Highscores highscores;
 Stage stage;//biến toàn cục chứ thực thể, logic
 
 //khai báo hàm giới hạn tốc độ khung hình
@@ -22,17 +21,15 @@ int main(int argc, char *argv[])
 
 	//đặt giá trị của app thành 0
 	memset(&app, 0, sizeof(App));
+	app.textureTail = &app.textureHead;
 
 	initSDL();
 
-	//gọi hàm cleanup sau khi kết thúc
-	atexit(cleanup);
+	atexit(cleanup);//gọi hàm cleanup sau khi kết thúc
 
-	initSounds();
+	initGame();
 
-	initFonts();
-
-	initStage();
+	initHighscores();
 
 	then = SDL_GetTicks();//hàm lấy thời gian
 
