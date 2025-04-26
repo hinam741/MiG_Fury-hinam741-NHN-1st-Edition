@@ -5,6 +5,7 @@
 #include "Core\init.h"
 #include "Core\input.h"
 #include "main.h"
+#include "title.h"
 
 App   app;//biến toàn cục chưa trạng thái chung
 Highscores highscores;
@@ -29,7 +30,7 @@ int main(int argc, char *argv[])
 
 	initGame();
 
-	initHighscores();
+	initTitle();
 
 	then = SDL_GetTicks();//hàm lấy thời gian
 

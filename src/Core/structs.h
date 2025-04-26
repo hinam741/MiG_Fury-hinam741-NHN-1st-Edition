@@ -6,6 +6,17 @@ typedef struct Entity Entity;
 typedef struct Explosion Explosion;
 typedef struct Debris    Debris;
 typedef struct Texture   Texture;
+typedef struct Widget  Widget;
+
+struct Widget
+{
+	char    name[MAX_NAME_LENGTH];
+	int     x;
+	int     y;
+	char    label[MAX_NAME_LENGTH];
+	Widget *prev;
+	Widget *next;
+};
 
 //struct xử lý logic và các hàm draw trong vòng lặp chính
 typedef struct
@@ -16,7 +27,7 @@ typedef struct
 
 struct Texture
 {
-	char         name[MAX_NAME_LENGTH];
+	char         name[MAX_FILENAME_LENGTH];//chứa thêm đường dẫn, tên
 	SDL_Texture *texture;
 	Texture     *next;
 };
@@ -26,10 +37,18 @@ typedef struct
 {
 	SDL_Renderer *renderer;
 	SDL_Window   *window;
-	Delegate      delegate; //đại diện
+	Delegate      delegate; //kiểu Delegate, biến delegate đại diện
 	int           keyboard[MAX_KEYBOARD_KEYS];
 	Texture       textureHead, *textureTail;
+
+	double        deltaTime;
+	Widget       *activeWidget;
+
 	char inputText[MAX_LINE_LENGTH];
+	struct
+	{
+		int fps;
+	} dev;
 } App;//biến toàn cục
 
 //struct thực thể

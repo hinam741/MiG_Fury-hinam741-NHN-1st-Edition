@@ -14,6 +14,7 @@
 
 //định nghĩa độ dài ký tự tối đa
 #define MAX_SCORE_NAME_LENGTH 16
+#define MAX_FILENAME_LENGTH 256
 #define MAX_NAME_LENGTH 32
 #define MAX_LINE_LENGTH 1024
 

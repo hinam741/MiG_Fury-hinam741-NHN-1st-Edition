@@ -4,6 +4,7 @@
 #include "highscores.h"
 #include "stage.h"
 #include "text.h"
+#include "title.h"
 
 extern App        app;
 extern Highscores highscores;
@@ -18,6 +19,7 @@ static void drawNameInput(void);
 
 static Highscore *newHighscore;
 static int        cursorBlink;
+static int        timeout;
 
 void initHighscoreTable(void)
 {
@@ -42,6 +44,8 @@ void initHighscores(void)
 	app.delegate.draw = draw;
 
 	memset(app.keyboard, 0, sizeof(int) * MAX_KEYBOARD_KEYS);//xóa trạng thái phím ngăn nhảy trò chơi
+
+	timeout = FPS * 5;
 }
 
 static void logic(void)
@@ -56,6 +60,11 @@ static void logic(void)
 	}
 	else
 	{
+	    if (--timeout <= 0)
+		{
+			initTitle();
+		}
+
 		if (app.keyboard[SDL_SCANCODE_LCTRL])
 		{
 			initStage();
@@ -116,6 +125,10 @@ static void draw(void)
 	else
 	{
 		drawHighscores();
+		if (timeout % 40 < 20)
+		{
+			drawText(SCREEN_WIDTH / 2, 600, 255, 255, 255, TEXT_CENTER, "PRESS LCTRL TO PLAY!");
+		}
 	}
 }
 
@@ -166,8 +179,6 @@ static void drawHighscores(void)
 
 		y += 50;
 	}
-
-	drawText(SCREEN_WIDTH / 2, 600, 255, 255, 255, TEXT_CENTER, "PRESS LCTRL TO PLAY!");
 }
 
 static void highscoreSort(Highscore *arr, int count)
