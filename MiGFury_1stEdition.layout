@@ -2,59 +2,9 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="src\Graphics\text.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Physics\util.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1606" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\common.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="162" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\Core\Init.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1574" topLine="45" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1787" topLine="55" />
-		</Cursor>
-	</File>
-	<File name="src\Core\Stage.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="18437" topLine="757" />
-		</Cursor>
-	</File>
-	<File name="src\Core\input.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1146" topLine="27" />
-		</Cursor>
-	</File>
-	<File name="src\Core\Init.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="122" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\Physics\util.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="205" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\Core\title.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="80" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\Core\highscores.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="5255" topLine="202" />
-		</Cursor>
-	</File>
-	<File name="src\Graphics\draw.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="280" topLine="0" />
+			<Cursor1 position="967" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\Graphics\draw.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -62,9 +12,49 @@
 			<Cursor1 position="1841" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\Core\structs.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1107" topLine="6" />
+			<Cursor1 position="1787" topLine="55" />
+		</Cursor>
+	</File>
+	<File name="src\Core\input.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1146" topLine="27" />
+		</Cursor>
+	</File>
+	<File name="src\common.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="162" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\Core\title.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="80" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\Core\Init.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1574" topLine="45" />
+		</Cursor>
+	</File>
+	<File name="src\Graphics\draw.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="280" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\Physics\util.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="205" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\Core\sound.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1036" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\Core\Init.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="122" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\Graphics\text.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -72,24 +62,34 @@
 			<Cursor1 position="158" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\Core\sound.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Core\structs.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1552" topLine="23" />
+			<Cursor1 position="1107" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="src\Core\highscores.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3577" topLine="154" />
 		</Cursor>
 	</File>
 	<File name="src\Core\background.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1459" topLine="0" />
+			<Cursor1 position="272" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\Graphics\text.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1606" topLine="33" />
+		</Cursor>
+	</File>
+	<File name="src\Core\Stage.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="15438" topLine="57" />
 		</Cursor>
 	</File>
 	<File name="src\defs.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="495" topLine="9" />
-		</Cursor>
-	</File>
-	<File name="src\Physics\util.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="967" topLine="4" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

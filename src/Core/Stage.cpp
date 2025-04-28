@@ -65,7 +65,7 @@ void initStage(void)
 
 	bulletTexture = loadTexture("gfx/playerBullet.png");
 	enemyTexture = loadTexture("gfx/b52_enemy-75x75.png");
-	alienBulletTexture = loadTexture("gfx/bossBullet-50x56.png");
+	alienBulletTexture = loadTexture("gfx/deep_red_bossBullet.png");
 	playerTexture = loadTexture("gfx/mig21_player-65x65.png");
 	explosionTexture = loadTexture("gfx/explosion.png");
 	pointsTexture = loadTexture("gfx/points.png");
