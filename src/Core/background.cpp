@@ -11,7 +11,7 @@ static SDL_Texture *background;
 
 void initBackground(void)
 {
-	background = loadTexture("gfx/city_background.jpg");
+	background = loadTexture("gfx/city_background_3.jpg");
 
 	backgroundX = 0;
 }

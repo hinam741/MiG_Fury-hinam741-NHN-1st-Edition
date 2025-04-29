@@ -64,9 +64,9 @@ void initStage(void)
 	stage.pointsTail = &stage.pointsHead;
 
 	bulletTexture = loadTexture("gfx/playerBullet.png");
-	enemyTexture = loadTexture("gfx/b52_enemy-75x75.png");
-	alienBulletTexture = loadTexture("gfx/deep_red_bossBullet.png");
-	playerTexture = loadTexture("gfx/mig21_player-65x65.png");
+	enemyTexture = loadTexture("gfx/b52_enemy-60x60.png");
+	alienBulletTexture = loadTexture("gfx/virtual_bullet-38x28.png");
+	playerTexture = loadTexture("gfx/mig21_player-60x60.png");
 	explosionTexture = loadTexture("gfx/explosion.png");
 	pointsTexture = loadTexture("gfx/points.png");
 
