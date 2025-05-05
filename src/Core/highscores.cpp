@@ -127,7 +127,7 @@ static void draw(void)
 		drawHighscores();
 		if (timeout % 40 < 20)
 		{
-			drawText(SCREEN_WIDTH / 2, 600, 255, 255, 255, TEXT_CENTER, "PRESS LCTRL TO PLAY!");
+			drawText(SCREEN_WIDTH / 2, 800, 255, 255, 255, TEXT_CENTER, "PRESS LCTRL TO PLAY!");
 		}
 	}
 }
@@ -136,16 +136,16 @@ static void drawNameInput(void)
 {
 	SDL_Rect r;
 
-	drawText(SCREEN_WIDTH / 2, 70, 255, 255, 255, TEXT_CENTER, "CONGRATULATIONS, YOU'VE WON A NEW RECORD!");//màu chữ trắng
+	drawText(SCREEN_WIDTH / 2, 100, 255, 255, 255, TEXT_CENTER, "CONGRATULATIONS, YOU'VE WON A NEW RECORD!");//màu chữ trắng
 
-	drawText(SCREEN_WIDTH / 2, 120, 255, 255, 255, TEXT_CENTER, "ENTER YOUR NAME BELOW:");
+	drawText(SCREEN_WIDTH / 2, 150, 255, 255, 255, TEXT_CENTER, "ENTER YOUR NAME BELOW:");
 
-	drawText(SCREEN_WIDTH / 2, 250, 128, 255, 128, TEXT_CENTER, newHighscore->name);//in tên màu xanh nhạt
+	drawText(SCREEN_WIDTH / 2, 280, 128, 255, 128, TEXT_CENTER, newHighscore->name);//in tên màu xanh nhạt
 
 	if (cursorBlink < FPS / 2)//con trỏ hiện 30/60 frame
 	{
 		r.x = ((SCREEN_WIDTH / 2) + (strlen(newHighscore->name) * GLYPH_WIDTH) / 2) + 5;
-		r.y = 250;
+		r.y = 280;
 		r.w = GLYPH_WIDTH;//kích thước con trỏ khớp với kích thước chữ
 		r.h = GLYPH_HEIGHT;
 
@@ -153,16 +153,16 @@ static void drawNameInput(void)
 		SDL_RenderFillRect(app.renderer, &r);//vẽ hình chữ nhật là con trỏ
 	}
 
-	drawText(SCREEN_WIDTH / 2, 625, 255, 255, 255, TEXT_CENTER, "PRESS ENTER WHEN FINISHED");
+	drawText(SCREEN_WIDTH / 2, 800, 255, 255, 255, TEXT_CENTER, "PRESS ENTER WHEN FINISHED");
 }
 
 static void drawHighscores(void)
 {
 	int i, y, r, g, b;
 
-	y = 150;
+	y = 200;
 
-	drawText(SCREEN_WIDTH / 2, 70, 255, 255, 255, TEXT_CENTER, "HIGHSCORES");
+	drawText(SCREEN_WIDTH / 2, 100, 255, 255, 255, TEXT_CENTER, "LEADERBOARD");
 
 	for (i = 0; i < NUM_HIGHSCORES; i++)
 	{
@@ -177,7 +177,7 @@ static void drawHighscores(void)
 
 		drawText(SCREEN_WIDTH / 2, y, r, g, b, TEXT_CENTER, "#%d. %-15s ...... %03d", (i + 1), highscores.highscore[i].name, highscores.highscore[i].score);
 
-		y += 50;
+		y += 70;
 	}
 }
 

@@ -7,6 +7,8 @@
 #include "main.h"
 #include "title.h"
 
+#include "SDL.h"
+
 App   app;//biến toàn cục chưa trạng thái chung
 Highscores highscores;
 Stage stage;//biến toàn cục chứ thực thể, logic
@@ -41,6 +43,8 @@ int main(int argc, char *argv[])
 		prepareScene();
 
 		doInput();
+
+		SDL_Event event;
 
 		app.delegate.logic();//logic game
 

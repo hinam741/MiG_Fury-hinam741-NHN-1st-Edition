@@ -9,7 +9,7 @@
 	<SDL.h>
 	<stdio.h>
 
-1745679493 source:e:\c\migfury_1stedition\main.cpp
+1745906610 source:e:\c\migfury_1stedition\main.cpp
 	"common.h"
 	"Graphics\draw.h"
 	"highscores.h"
@@ -17,6 +17,7 @@
 	"Core\input.h"
 	"main.h"
 	"title.h"
+	"SDL.h"
 
 1744805352 source:e:\c\migfury_1stedition\src\core\engine.cpp
 	"Engine.h"
@@ -167,11 +168,11 @@
 1745596183 e:\c\migfury_1stedition\src\core\structs.h
 	"defs.h"
 
-1745595447 e:\c\migfury_1stedition\src\defs.h
+1745906610 e:\c\migfury_1stedition\src\defs.h
 
 1745341097 e:\c\migfury_1stedition\src\graphics\draw.h
 
-1745559307 e:\c\migfury_1stedition\src\core\init.h
+1745906610 e:\c\migfury_1stedition\src\core\init.h
 
 1744988499 e:\c\migfury_1stedition\src\core\input.h
 
@@ -179,7 +180,7 @@
 
 1745046005 e:\c\migfury_1stedition\src\core\stage.h
 
-1745559293 source:e:\c\migfury_1stedition\src\core\init.cpp
+1745907193 source:e:\c\migfury_1stedition\src\core\init.cpp
 	<SDL_image.h>
 	<SDL_mixer.h>
 	"common.h"
@@ -237,7 +238,7 @@
 
 1745559391 e:\c\migfury_1stedition\src\core\background.h
 
-1745802698 source:e:\c\migfury_1stedition\src\core\highscores.cpp
+1745907895 source:e:\c\migfury_1stedition\src\core\highscores.cpp
 	"common.h"
 	"background.h"
 	"highscores.h"
@@ -252,7 +253,7 @@
 
 1745679473 e:\c\migfury_1stedition\src\core\title.h
 
-1745679473 source:e:\c\migfury_1stedition\src\core\title.cpp
+1745907711 source:e:\c\migfury_1stedition\src\core\title.cpp
 	"common.h"
 	"background.h"
 	"draw.h"

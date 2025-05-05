@@ -9,8 +9,8 @@
 	dest[n - 1] = '\0'
 
 //định nghĩa về chiều dài và rộng của screen
-#define SCREEN_WIDTH   1280
-#define SCREEN_HEIGHT  720
+#define SCREEN_WIDTH   1600
+#define SCREEN_HEIGHT  900
 
 //định nghĩa độ dài ký tự tối đa
 #define MAX_SCORE_NAME_LENGTH 16

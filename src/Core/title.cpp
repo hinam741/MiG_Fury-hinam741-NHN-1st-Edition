@@ -65,7 +65,7 @@ static void draw(void)
 
 	if (timeout % 40 < 20)
 	{
-		drawText(SCREEN_WIDTH / 2, 600, 255, 255, 255, TEXT_CENTER, "PRESS LCTRL TO PLAY!");
+		drawText(SCREEN_WIDTH / 2, 800, 255, 255, 255, TEXT_CENTER, "PRESS LCTRL TO PLAY!");
 	}
 }
 
