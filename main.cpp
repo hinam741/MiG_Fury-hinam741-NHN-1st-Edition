@@ -11,7 +11,7 @@
 
 App   app;//biến toàn cục chưa trạng thái chung
 Highscores highscores;
-Stage stage;//biến toàn cục chứ thực thể, logic
+Stage stage;//biến toàn cục chứa thực thể, logic
 
 //khai báo hàm giới hạn tốc độ khung hình
 static void capFrameRate(long *then, float *remainder);
@@ -19,8 +19,8 @@ static void capFrameRate(long *then, float *remainder);
 int main(int argc, char *argv[])
 {
 	//đo thời gian giữa các frame
-	long  then;
-	float remainder;
+	long  then;//thời điểm bắt đầu
+	float remainder;//dư frame
 
 	//đặt giá trị của app thành 0
 	memset(&app, 0, sizeof(App));
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 	{
 		prepareScene();
 
-		doInput();
+		doInput();//xử lý sự kiện bàn phím...
 
 		SDL_Event event;
 
@@ -66,7 +66,7 @@ static void capFrameRate(long *then, float *remainder)
 
 	*remainder -= (int)*remainder; //giữ phần thập phân dư để cộng dồn vào frame sau
 
-	frameTime = SDL_GetTicks() - *then;
+	frameTime = SDL_GetTicks() - *then;//hàm thời gian
 
 	wait -= frameTime;
 

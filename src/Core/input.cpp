@@ -44,8 +44,8 @@ void doInput(void)
 				doKeyUp(&event.key);
 				break;
 
-            case SDL_TEXTINPUT:
-				STRNCPY(app.inputText, event.text.text, MAX_LINE_LENGTH);
+            case SDL_TEXTINPUT://nhập chữ
+				STRNCPY(app.inputText, event.text.text, MAX_LINE_LENGTH);//copy và giữ độ dài
 				break;
 
 			default:

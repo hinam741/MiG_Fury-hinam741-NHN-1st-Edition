@@ -175,6 +175,7 @@ static void drawHighscores(void)
 			b = 0;
 		}
 
+		//%-15s : bắt đầu, định dạng string, căn trái, tối đa 15 kí tự
 		drawText(SCREEN_WIDTH / 2, y, r, g, b, TEXT_CENTER, "#%d. %-15s ...... %03d", (i + 1), highscores.highscore[i].name, highscores.highscore[i].score);
 
 		y += 70;

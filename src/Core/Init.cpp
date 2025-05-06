@@ -15,7 +15,7 @@ void initSDL(void)
 {
 	int rendererFlags, windowFlags;
 
-	rendererFlags = SDL_RENDERER_ACCELERATED;
+	rendererFlags = SDL_RENDERER_ACCELERATED;//tăng tốc phần cứng
 
 	windowFlags = 0;
 
@@ -39,9 +39,9 @@ void initSDL(void)
 
 	app.renderer = SDL_CreateRenderer(app.window, -1, rendererFlags);
 
-	IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
+	IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);//sdl image
 
-	SDL_ShowCursor(0);
+	SDL_ShowCursor(0);//ẩn con trỏ chuột
 }
 
 void initGame(void)

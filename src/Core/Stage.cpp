@@ -65,7 +65,7 @@ void initStage(void)
 
 	bulletTexture = loadTexture("gfx/playerBullet.png");
 	enemyTexture = loadTexture("gfx/b52_enemy-60x60.png");
-	alienBulletTexture = loadTexture("gfx/virtual_bullet-38x28.png");
+	alienBulletTexture = loadTexture("gfx/playerBullet_2.png");
 	playerTexture = loadTexture("gfx/mig21_player-60x60.png");
 	explosionTexture = loadTexture("gfx/explosion.png");
 	pointsTexture = loadTexture("gfx/points.png");
@@ -80,7 +80,7 @@ void initStage(void)
 
 	enemySpawnTimer = 0;
 
-	stageResetTimer = FPS * 3;
+	stageResetTimer = FPS * 3;//tạm ngưng 3s trước khi chuyển trạng thái
 }
 
 static void resetStage(void)
@@ -686,7 +686,7 @@ static void addPointsPod(int x, int y)
 
 	SDL_QueryTexture(e->texture, NULL, NULL, &e->w, &e->h);
 
-	e->x -= e->w / 2;
+	e->x -= e->w / 2;//căn giữa
 	e->y -= e->h / 2;
 }
 
@@ -715,7 +715,7 @@ static void drawPointsPods(void)
 
 	for (e = stage.pointsHead.next; e != NULL; e = e->next)
 	{
-		if (e->health > (FPS * 2) || e->health % 12 < 6)
+		if (e->health > (FPS * 2) || e->health % 12 < 6)//sau 2s sẽ nhấp nháy chỉ vẽ nửa đầu chu kì 0-5s, ko vẽ nửa sau 6-11
 		{
 			blit(e->texture, e->x, e->y);
 		}
@@ -748,7 +748,7 @@ static void drawDebris(void)
 
 	for (d = stage.debrisHead.next; d != NULL; d = d->next)
 	{
-		blitRect(d->texture, &d->rect, d->x, d->y);
+		blitRect(d->texture, &d->rect, d->x, d->y);//vẽ phần nhỏ
 	}
 }
 

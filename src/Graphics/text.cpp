@@ -18,11 +18,11 @@ void drawText(int x, int y, int r, int g, int b, int align, char *format, ...)//
 {
 	int      i, len, c;
 	SDL_Rect rect;//chỉ định vùng kết cấu càn dùng
-	va_list  args;//khai báo viến kiểu va_list
+	va_list  args;//khai báo biến kiểu va_list lưu đối số ko xác định
 
 	memset(&drawTextBuffer, '\0', sizeof(drawTextBuffer));//xóa drawTextBuffer
 
-	va_start(args, format);//định dạng varargs
+	va_start(args, format);//khởi tạo varargs
 	vsprintf(drawTextBuffer, format, args);//định dạng xong đưa kết quả vào drawTextBuffer
 	va_end(args);
 

@@ -25,7 +25,7 @@ void initStarfield(void)
 	{
 		stars[i].x = rand() % SCREEN_WIDTH;
 		stars[i].y = rand() % SCREEN_HEIGHT;
-		stars[i].speed = 1 + rand() % 8;
+		stars[i].speed = 1 + rand() % 8;//đặt random speed từ 1-8
 	}
 }
 
