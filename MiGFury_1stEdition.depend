@@ -168,7 +168,7 @@
 1745596183 e:\c\migfury_1stedition\src\core\structs.h
 	"defs.h"
 
-1746511711 e:\c\migfury_1stedition\src\defs.h
+1746552409 e:\c\migfury_1stedition\src\defs.h
 
 1745341097 e:\c\migfury_1stedition\src\graphics\draw.h
 
@@ -224,7 +224,7 @@
 
 1745580592 e:\c\migfury_1stedition\src\graphics\text.h
 
-1746508256 source:e:\c\migfury_1stedition\src\graphics\text.cpp
+1746552409 source:e:\c\migfury_1stedition\src\graphics\text.cpp
 	"common.h"
 	"draw.h"
 	"text.h"
@@ -238,7 +238,7 @@
 
 1745559391 e:\c\migfury_1stedition\src\core\background.h
 
-1745907895 source:e:\c\migfury_1stedition\src\core\highscores.cpp
+1746552409 source:e:\c\migfury_1stedition\src\core\highscores.cpp
 	"common.h"
 	"background.h"
 	"highscores.h"

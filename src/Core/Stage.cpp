@@ -366,7 +366,7 @@ static int bulletHitFighter(Entity *b)
 
 	for (e = stage.fighterHead.next; e != NULL; e = e->next)
 	{
-		if (e->side != b->side && collision(b->x, b->y, b->w, b->h, e->x, e->y, e->w, e->h))//chỉ kiểm tra va chạm khác phe; kiểm tra va chạm của viên đạn với địch (trong util.cpp)
+		if (e->side != b->side && collision(b->x, b->y, b->w, b->h, e->x, e->y, e->w, e->h))//chỉ kiểm tra va chạm khác phe
 		{
 			b->health = 0;//bullet
 			e->health = 0;//enemy
@@ -387,7 +387,7 @@ static int bulletHitFighter(Entity *b)
                         addPointsPod(e->x + e->w / 2, e->y + e->h / 2);
                     }
 
-				playSound(SND_ALIEN_DIE, CH_ANY);//thêm âm thanh, phát nhiều âm thanh nổ cùng lúc, chọn kênh rảnh bất kỳ
+				playSound(SND_ALIEN_DIE, CH_ANY);
 			}
 
 			return 1;//trả về 1 nếu trúng mục tiêu true
@@ -401,7 +401,7 @@ static void spawnEnemies(void)
 {
 	Entity *enemy;//con trỏ enemy trỏ tới Entity(thực thể)
 
-	if (--enemySpawnTimer <= 0)//thêm kẻ thù khi giảm xuống dưới 1
+	if (--enemySpawnTimer <= 0)
 	{
 		//nếu hết timer thì tạo enemy mới
 		enemy = (Entity*)malloc(sizeof(Entity));
@@ -415,7 +415,7 @@ static void spawnEnemies(void)
 		stage.fighterTail = enemy;
 
 		enemy->x = SCREEN_WIDTH;
-		enemy->y = rand() % SCREEN_HEIGHT; //đặt tọa độ của kẻ thù là ngẫu nhiên theo screen height
+		enemy->y = rand() % SCREEN_HEIGHT;
 		enemy->texture = enemyTexture;
 		SDL_QueryTexture(enemy->texture, NULL, NULL, &enemy->w, &enemy->h);
 
