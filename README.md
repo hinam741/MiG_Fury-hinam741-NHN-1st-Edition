@@ -40,4 +40,3 @@ There is no win condition — the goal is to get a high score. If your score is 
 
 - Game Over:
 The game ends if your plane gets hit by an enemy bullet.
-```
