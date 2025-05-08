@@ -54,7 +54,7 @@ The game ends if your plane gets hit by an enemy bullet.
 There are several source that help me make the game easier
  - [SDL2_Wiki](https://wiki.libsdl.org/SDL2/FrontPage)
  - [Lazy Foo' Production](https://lazyfoo.net/tutorials/SDL/index.php)
- - [Youtube and Udemy's course instructions](youtube.com)
+ - [Youtube and Udemy's courses instructions](https://www.youtube.com/)
 
 
 ## Resources
@@ -64,8 +64,8 @@ All resources are saved in the gfx folder.
 There are several sources that I used to find images and sounds for my game:
 
  - [Audio](https://www.youtube.com/playlist?list=PL7Ra2mJBhymKUGzbngs3rMRqFTb9EFOQG)
- - [Image](google.com)
- - [Remove Background](remove.bg)
+ - [Image](https://www.google.com/)
+ - [Remove Background](https://www.remove.bg/)
  - [AI-based](https://chatgpt.com/)
 
 Here are some of the images I used in my game:
