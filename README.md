@@ -110,6 +110,7 @@ Here are some of the images I used in my game:
 ![Image](https://github.com/user-attachments/assets/2f730c81-83c7-484e-a866-745305ac3161)
 
 - Background
+
 ![Image](https://github.com/user-attachments/assets/884c8a42-ddc5-44de-8626-4905e13a89a0)
 
 Additionally, I have also saved some other supplementary resources such as backgrounds, which you can freely change to your liking by modifying the line of code that loads the texture.
