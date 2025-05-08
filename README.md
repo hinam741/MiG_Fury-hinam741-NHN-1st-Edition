@@ -116,4 +116,4 @@ Here are some screenshots from MiG Fury.
 
 - Highscore table – Keep enjoying the game and aim for new achievements!
 
-![Image](https://github.com/user-attachments/assets/3a50e30e-9dad-4f88-81e9-ee36e5183e58)
+![Image](https://github.com/user-attachments/assets/644d82e7-a931-4df9-afff-03d97ba926c7)
