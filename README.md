@@ -1,21 +1,28 @@
 
 # MiG Fury v1.0.0
+Final Project – Advanced Programming Course (INT2215 12 – N2)
+
+Inspired by the "Dien Bien Phu in the Air" campaign, the main character takes on the role of a pilot flying a MiG-21, tasked with defending the skies against the U.S. Air Force.
+
+Additionally, the game draws inspiration from [CounterAttack: Uprising](https://store.steampowered.com/app/451600/CounterAttack_Uprising/), with simplified features and modified gameplay mechanics.
 
 
+## Author
 
-## Authors
-
-- [@hinam741](https://www.github.com/hinam741): Nguyễn Hải Nam - K69I - IS4 - UET
+- [@hinam741](https://www.github.com/hinam741): Nguyễn Hải Nam (24022697) - K69I - IS4 - UET
 
 
 ## Installation
 
-To install my game, please use CodeBlocks IDE! Ensure that you installed all SDL libs.
+To install my game, please use the Code::Blocks IDE!
+Make sure that all SDL libraries are properly installed.
 
 ```bash
-  First, choose Code button, then click Download ZIP.
-  After that you extract .zip file.
-  Last, you run MiGFury_1stEdition.cbp by CodeBlocks IDE. To play the game, please click build and run button.
+1. First, click the "Code" button and select "Download ZIP".
+2. Next, extract the .zip file.
+3. Finally, open `MiGFury_1stEdition.cbp` with Code::Blocks IDE.
+   To play the game, click the "Build and Run" button.
+
 ```
 
 ## Acknowledgements
@@ -49,4 +56,37 @@ There are several source that help me make the game easier
  - [SDL2_Wiki](https://wiki.libsdl.org/SDL2/FrontPage)
  - [Lazy Foo' Production](https://lazyfoo.net/tutorials/SDL/index.php)
  - [Youtube and Udemy's course instructions](youtube.com)
+
+
+## Resources
+
+All resources are saved in the gfx folder.
+
+There are several sources that I used to find images and sounds for my game:
+
+ - [Audio](https://www.youtube.com/playlist?list=PL7Ra2mJBhymKUGzbngs3rMRqFTb9EFOQG)
+ - [Image](google.com)
+ - [Remove Background](remove.bg)
+ - [AI-based](https://chatgpt.com/)
+
+Here are some of the images I used in my game:
+
+- Player [MiG-21] and Enemy [Boeing B-52 Stratofortress] (not yet resized)
+
+![Image](https://github.com/user-attachments/assets/f3261175-aa0d-41f0-93fb-fbd8b028dda7)
+
+![Image](https://github.com/user-attachments/assets/2f730c81-83c7-484e-a866-745305ac3161)
+
+- Bullets
+![Image](https://github.com/user-attachments/assets/95b73b6c-5cd7-4f0a-b1f7-f50e66eadf03)            
+![Image](https://github.com/user-attachments/assets/a2e5a86a-094c-42cb-8c29-d396bd66e959)
+
+- PodPoint
+![Image](https://github.com/user-attachments/assets/a80fff6f-cc5b-48f3-b2cd-1f9ee2eb96d0)
+
+- Background
+![Image](https://github.com/user-attachments/assets/884c8a42-ddc5-44de-8626-4905e13a89a0)
+
+Additionally, I have also saved some other supplementary resources such as backgrounds, which you can freely change to your liking by modifying the line of code that loads the texture.
+
 
