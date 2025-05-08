@@ -138,7 +138,8 @@ Here are some screenshots from MiG Fury.
 
 - `Highscore table`– Keep enjoying the game and aim for new achievements!
 
-![Image](https://github.com/user-attachments/assets/644d82e7-a931-4df9-afff-03d97ba926c7)## Project Structure
+![Image](https://github.com/user-attachments/assets/644d82e7-a931-4df9-afff-03d97ba926c7)
+## Project Structure
 
 The project consists of 23 `.cpp` and `.h` files, organized in the `src` directory:
 
