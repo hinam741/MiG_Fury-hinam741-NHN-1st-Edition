@@ -112,7 +112,7 @@ Here are some screenshots from MiG Fury.
 ![Image](https://github.com/user-attachments/assets/b3e6e3b2-52eb-46a8-aa3b-7156d812766c)
 
 - Record – When you're defeated, the game ends; but if you set a new record, you'll be prompted to enter your name here
-![Image](https://github.com/user-attachments/assets/17a8dbd4-8c3d-4492-902e-0286c9252ffa)
+![Image](https://github.com/user-attachments/assets/3a50e30e-9dad-4f88-81e9-ee36e5183e58)
 
 - Highscore table – Keep enjoying the game and aim for new achievements!
 
