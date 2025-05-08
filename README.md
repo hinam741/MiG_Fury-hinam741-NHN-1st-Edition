@@ -1,6 +1,6 @@
 
 # MiG Fury v1.0.0
-Final Project – Advanced Programming Course (INT2215 12 – N2)
+Final Project – Advanced Programming Course (INT2215 12 – G2)
 
 Inspired by the "Dien Bien Phu in the Air" campaign, the main character takes on the role of a pilot flying a MiG-21, tasked with defending the skies against the U.S. Air Force.
 
@@ -22,7 +22,6 @@ Make sure that all SDL libraries are properly installed.
 2. Next, extract the .zip file.
 3. Finally, open `MiGFury_1stEdition.cbp` with Code::Blocks IDE.
    To play the game, click the "Build and Run" button.
-
 ```
 
 ## Acknowledgements
@@ -77,8 +76,10 @@ Here are some of the images I used in my game:
 
 ![Image](https://github.com/user-attachments/assets/2f730c81-83c7-484e-a866-745305ac3161)
 
-- Bullets
-![Image](https://github.com/user-attachments/assets/95b73b6c-5cd7-4f0a-b1f7-f50e66eadf03)            
+- Player bullet
+![Image](https://github.com/user-attachments/assets/95b73b6c-5cd7-4f0a-b1f7-f50e66eadf03)       
+
+- Enemy bullet
 ![Image](https://github.com/user-attachments/assets/a2e5a86a-094c-42cb-8c29-d396bd66e959)
 
 - PodPoint
