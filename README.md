@@ -13,12 +13,12 @@ Additionally, the game draws inspiration from [CounterAttack: Uprising](https://
 
 
 ## Official Logo
-![Logo](https://github.com/user-attachments/assets/58fd2c07-611b-465a-8d78-6a43fb2a8e4f)
+![Logo](https://github.com/user-attachments/assets/4aa0d368-d928-4083-a16b-bec667f63e5c)
 
 
 ## Official Gameplay Video
 Click this link to watch the Official GamePlay Video of
-[MiG Fury v1.0.0](https://youtu.be/mQJ_bt-EXpQ)
+[MiG Fury v1.0.0.](https://youtu.be/mQJ_bt-EXpQ)
 
 ## Installation
 
@@ -97,3 +97,23 @@ Here are some of the images I used in my game:
 Additionally, I have also saved some other supplementary resources such as backgrounds, which you can freely change to your liking by modifying the line of code that loads the texture.
 
 
+
+## Screenshots
+
+Here are some screenshots from MiG Fury.
+
+- Title screen
+![Image](https://github.com/user-attachments/assets/707f257e-fa56-4f8f-a2d7-60f6c290b29f)
+
+- In-game – Here's what the game's interface looks like
+![Image](https://github.com/user-attachments/assets/f793e937-163c-4d67-b2ae-fff6aa83dc2b)
+
+- Effect – This is the explosion effect when your bullet hits an enemy
+![Image](https://github.com/user-attachments/assets/b3e6e3b2-52eb-46a8-aa3b-7156d812766c)
+
+- Record – When you're defeated, the game ends; but if you set a new record, you'll be prompted to enter your name here
+![Image](https://github.com/user-attachments/assets/17a8dbd4-8c3d-4492-902e-0286c9252ffa)
+
+- Highscore table – Keep enjoying the game and aim for new achievements!
+
+![Image](https://github.com/user-attachments/assets/3a50e30e-9dad-4f88-81e9-ee36e5183e58)
