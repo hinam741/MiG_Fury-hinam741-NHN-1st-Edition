@@ -12,6 +12,14 @@ Additionally, the game draws inspiration from [CounterAttack: Uprising](https://
 - [@hinam741](https://www.github.com/hinam741): Nguyễn Hải Nam (24022697) - K69I - IS4 - UET
 
 
+## Official Logo
+![Logo](https://github.com/user-attachments/assets/58fd2c07-611b-465a-8d78-6a43fb2a8e4f)
+
+
+## Official Gameplay Video
+Click this link to watch the Official GamePlay Video of
+[MiG Fury v1.0.0](https://youtu.be/mQJ_bt-EXpQ)
+
 ## Installation
 
 To install my game, please use the Code::Blocks IDE!
@@ -32,9 +40,6 @@ Make sure that all SDL libraries are properly installed.
 * Features flat, boundary-less graphics that loop infinitely within the gameplay area.
 
 * Incorporates advanced programming concepts learned in C/C++, including linked lists, pointers, self-referential structures, structs, classes, and more.
-
-![Logo](https://github.com/user-attachments/assets/58fd2c07-611b-465a-8d78-6a43fb2a8e4f)
-
 ## How to play
 
 * Controls:
@@ -55,6 +60,7 @@ There are several source that help me make the game easier
  - [SDL2_Wiki](https://wiki.libsdl.org/SDL2/FrontPage)
  - [Lazy Foo' Production](https://lazyfoo.net/tutorials/SDL/index.php)
  - [Youtube and Udemy's courses instructions](https://www.youtube.com/)
+ - Other sources
 
 
 ## Resources
@@ -70,12 +76,6 @@ There are several sources that I used to find images and sounds for my game:
 
 Here are some of the images I used in my game:
 
-- Player [MiG-21] and Enemy [Boeing B-52 Stratofortress] (not yet resized)
-
-![Image](https://github.com/user-attachments/assets/f3261175-aa0d-41f0-93fb-fbd8b028dda7)
-
-![Image](https://github.com/user-attachments/assets/2f730c81-83c7-484e-a866-745305ac3161)
-
 - Player bullet
 ![Image](https://github.com/user-attachments/assets/95b73b6c-5cd7-4f0a-b1f7-f50e66eadf03)       
 
@@ -84,6 +84,12 @@ Here are some of the images I used in my game:
 
 - PodPoint
 ![Image](https://github.com/user-attachments/assets/a80fff6f-cc5b-48f3-b2cd-1f9ee2eb96d0)
+
+- Player [MiG-21] and Enemy [Boeing B-52 Stratofortress] (not yet resized)
+
+![Image](https://github.com/user-attachments/assets/f3261175-aa0d-41f0-93fb-fbd8b028dda7)
+
+![Image](https://github.com/user-attachments/assets/2f730c81-83c7-484e-a866-745305ac3161)
 
 - Background
 ![Image](https://github.com/user-attachments/assets/884c8a42-ddc5-44de-8626-4905e13a89a0)
