@@ -58,6 +58,35 @@ You can also install it using the `git clone` command.
 - **Sound**: Audio feedback for actions like shooting and explosions.
 - **Starfield**: Continuous scrolling starfield for a dynamic background.
 - **Vector Normalization**: Ensures accurate targeting based on last known position.
+## Project Structure
+
+The project consists of 23 `.cpp` and `.h` files, organized in the `src` directory:
+
+### `src/Core` – Core Logic
+
+- `background` – Background initialization
+- `highscores` – Scoreboard logic
+- `init` – SDL and game setup
+- `input` – Input event handling
+- `sound` – Audio functionality
+- `stage` – Game logic (player, alien, bullets)
+- `structs` – Essential data structures
+- `title` – Title screen rendering
+
+### `src/Graphics` – Rendering
+
+- `draw` – Scene rendering functions
+- `text` – Font and text drawing
+
+### `src/Physics` – Game Physics
+
+- `util` – Collision detection, vector math, interpolation
+
+### Other folders
+
+- `common` – Third-party libraries
+- `defs` – Game-wide constants and enums
+- `main` – Main loop and frame rate limiter
 ## How to play
 
 * Controls:
@@ -140,35 +169,6 @@ Here are some screenshots from MiG Fury.
 - `Highscore table`– Keep enjoying the game and aim for new achievements!
 
 ![Image](https://github.com/user-attachments/assets/644d82e7-a931-4df9-afff-03d97ba926c7)
-## Project Structure
-
-The project consists of 23 `.cpp` and `.h` files, organized in the `src` directory:
-
-### `src/Core` – Core Logic
-
-- `background` – Background initialization
-- `highscores` – Scoreboard logic
-- `init` – SDL and game setup
-- `input` – Input event handling
-- `sound` – Audio functionality
-- `stage` – Game logic (player, alien, bullets)
-- `structs` – Essential data structures
-- `title` – Title screen rendering
-
-### `src/Graphics` – Rendering
-
-- `draw` – Scene rendering functions
-- `text` – Font and text drawing
-
-### `src/Physics` – Game Physics
-
-- `util` – Collision detection, vector math, interpolation
-
-### Other folders
-
-- `common` – Third-party libraries
-- `defs` – Game-wide constants and enums
-- `main` – Main loop and frame rate limiter
 ## Final Words
 
 Thank you for checking out **MiG Fury**!  
