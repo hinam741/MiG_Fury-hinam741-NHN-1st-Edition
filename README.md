@@ -35,7 +35,7 @@ Make sure all required SDL libraries are properly installed.
 
 You can also install it using the `git clone` command.
 
-****Note****: If you haven't installed all the required SDL libraries and cannot run the game, please install the following software: [msys2](https://www.msys2.org/#installation).
+****Important****: If you haven't installed all the required SDL libraries and cannot run the game, please install the following software: [msys2](https://www.msys2.org/#installation).
 ## Acknowledgements
 
 - Developed using C/C++ with SDL2, SDL_mixer, SDL_image, and SDL_ttf.
@@ -307,6 +307,8 @@ Dưới đây là một số nguồn tôi sử dụng để tìm hình ảnh và
  - [Hình Ảnh](https://www.google.com/)  
  - [Xóa Nền](https://www.remove.bg/)  
  - [Ảnh tạo bởi AI](https://chatgpt.com/)
+
+🚨 Tham khảo ảnh chi tiết tại [phiên bản tiếng Anh](https://github.com/hinam741/MiG_Fury-hinam741-NHN-1st-Edition?tab=readme-ov-file#resources) hoặc tại thư mục `gfx`
 
 ...
 
