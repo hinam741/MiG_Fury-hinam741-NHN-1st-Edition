@@ -1,5 +1,6 @@
 
 # MiG Fury v1.0.0
+## English version
 Final Project – Advanced Programming Course (INT2215 12 – G2)
 
 Inspired by the "Dien Bien Phu in the Air" campaign, the main character takes on the role of a pilot flying a MiG-21, tasked with defending the skies against the U.S. Air Force.
@@ -33,6 +34,8 @@ Make sure all required SDL libraries are properly installed.
 - Click **Build and Run** to play the game.
 
 You can also install it using the `git clone` command.
+
+****Note****: If you haven't installed all the required SDL libraries and cannot run the game, please install the following software: [msys2](https://www.msys2.org/#installation).
 ## Acknowledgements
 
 - Developed using C/C++ with SDL2, SDL_mixer, SDL_image, and SDL_ttf.
@@ -90,7 +93,7 @@ The project consists of 23 `.cpp` and `.h` files, organized in the `src` directo
 ## How to play
 
 * Controls:
-Press Left Ctrl to start the game and to shoot bullets. Use the arrow keys to move the plane. During the game, shoot enemy planes and avoid their bullets.
+Press `Left Ctrl` to start the game and to shoot bullets. Use the arrow keys to move the plane. During the game, shoot enemy planes and avoid their bullets.
 
 * Scoring:
 When you shoot down an enemy, it may drop random PodPoints. Move your plane to collect them. Points are only awarded when you collect PodPoints, not when you shoot enemies.
@@ -176,3 +179,141 @@ I truly appreciate your time and interest.
 I hope you enjoy playing and create unforgettable moments with this game.
 
 **Let the skies be yours — good luck, pilot!**
+
+
+# MiG Fury v1.0.0
+## Phiên bản tiếng Việt
+Bài tập lớn – Môn Lập Trình Nâng Cao (INT2215 12 – N2)
+
+Lấy cảm hứng từ chiến dịch “Điện Biên Phủ trên không”, nhân vật chính vào vai một phi công điều khiển chiếc MiG-21, với nhiệm vụ bảo vệ bầu trời trước lực lượng không quân Hoa Kỳ.
+
+Ngoài ra, trò chơi còn lấy cảm hứng từ [CounterAttack: Uprising](https://store.steampowered.com/app/451600/CounterAttack_Uprising/), với các tính năng được đơn giản hóa và lối chơi đã được chỉnh sửa.
+
+## Tác giả
+
+- [@hinam741](https://www.github.com/hinam741): Nguyễn Hải Nam (24022697) - K69I - IS4 - UET
+
+## Logo Chính Thức  
+![Logo](https://github.com/user-attachments/assets/4aa0d368-d928-4083-a16b-bec667f63e5c)
+
+## Video Gameplay
+Bấm vào liên kết sau để xem Video Gameplay của
+[MiG Fury v1.0.0.](https://youtu.be/mQJ_bt-EXpQ)
+
+## Cài Đặt
+
+Để cài đặt trò chơi, vui lòng sử dụng IDE Code::Blocks.  
+Hãy đảm bảo rằng tất cả thư viện SDL cần thiết đã được cài đặt đầy đủ.
+
+- Trước tiên, nhấn nút `Code` và chọn **Download ZIP**.
+
+- Giải nén file `.zip`.
+
+- Mở file `MiGFury_1stEdition.cbp` bằng IDE Code::Blocks.
+
+- Nhấn **Build and Run** để chơi trò chơi.
+
+Bạn cũng có thể cài đặt bằng lệnh `git clone`.
+
+****Chú ý****: Nếu bạn chưa cài đặt đủ các thư viện SDL và không thể chạy game, hãy cài đặt phần mềm sau:
+[msys2](https://www.msys2.org/#installation).
+
+## Kiến thức áp dụng
+
+- Phát triển bằng C/C++ với các thư viện SDL2, SDL_mixer, SDL_image và SDL_ttf.
+
+- Hỗ trợ đồng thời 8 kênh âm thanh.
+
+- Cài đặt đồ họa 2D không biên giới, không ngắt quãng với khả năng lặp vô hạn.
+
+- Ứng dụng các khái niệm lập trình nâng cao: danh sách liên kết, con trỏ, cấu trúc, lớp, v.v.
+
+## Cơ Chế Và Tính Năng Trò Chơi
+
+### Tính Điểm  
+- PodPoint (1–2 điểm, tồn tại trong 10s) sẽ rơi ra khi tiêu diệt kẻ địch.  
+- Chỉ nhận điểm khi thu thập, không tính khi chỉ bắn trúng.
+
+### Điều Kiện Thắng / Thua  
+- Không có điều kiện thắng cụ thể; mục tiêu là đạt điểm cao nhất có thể.  
+- Nếu điểm số lọt vào top 8, sẽ được đánh dấu là **A New Record**.  
+- Trò chơi kết thúc khi bị trúng đạn của kẻ địch.
+
+### Tính Năng  
+- **Hiệu Ứng Nổ**: Hiệu ứng nổ với màu sắc tươi sáng và hiệu ứng phân tách theo hướng.  
+- **Âm Thanh**: Phản hồi âm thanh cho các hành động như bắn, nổ.  
+- **Bầu Trời Đầy Sao - Cánh đồng sao**: Nền động với hiệu ứng sao trôi liên tục.  
+- **Chuẩn Hóa Vector**: Đảm bảo ngắm chính xác theo vị trí cuối cùng được biết của mục tiêu.
+
+## Cấu Trúc Dự Án
+
+Dự án bao gồm 23 file `.cpp` và `.h`, được tổ chức trong thư mục `src`:
+
+### `src/Core` – Logic Chính
+
+- `background` – Khởi tạo nền  
+- `highscores` – Logic bảng điểm  
+- `init` – Cài đặt SDL và trò chơi  
+- `input` – Xử lý sự kiện nhập liệu  
+- `sound` – Chức năng âm thanh  
+- `stage` – Logic trò chơi (người chơi, địch, đạn)  
+- `structs` – Các cấu trúc cơ bản  
+- `title` – Vẽ màn hình tiêu đề
+
+### `src/Graphics` – Kết Xuất Đồ Họa
+
+- `draw` – Hàm vẽ cảnh  
+- `text` – Vẽ chữ và font
+
+### `src/Physics` – Vật Lý Trong Game
+
+- `util` – Va chạm, toán học vector, nội suy
+
+### Thư Mục Khác
+
+- `common` – Thư viện bên thứ ba  
+- `defs` – Các hằng số và enum toàn game  
+- `main` – Vòng lặp chính và giới hạn FPS
+
+## Cách Chơi
+
+* Điều Khiển:  
+Nhấn `Ctrl Trái` để bắt đầu trò chơi và bắn đạn. Sử dụng phím mũi tên để di chuyển máy bay. Trong quá trình chơi, hãy bắn máy bay địch và tránh đạn của chúng.
+
+* Tính Điểm:  
+Khi tiêu diệt kẻ địch, chúng có thể rơi ra các PodPoint ngẫu nhiên. Di chuyển máy bay để thu thập chúng. Chỉ khi thu thập mới nhận được điểm, không tính khi chỉ bắn.
+
+* Hệ Thống Điểm Cao:  
+Không có điều kiện chiến thắng – mục tiêu là đạt điểm cao. Nếu điểm số của bạn nằm trong top 8 của bảng điểm, sẽ được đánh dấu là `A New Record`. Khi đó bạn có thể nhập tên và nhấn Enter để lưu lại.
+
+* Kết Thúc Trò Chơi:  
+Trò chơi kết thúc nếu máy bay của bạn bị trúng đạn địch.
+
+## Nguồn tham khảo
+
+Một số nguồn tài nguyên giúp tôi dễ dàng hơn trong việc phát triển trò chơi:  
+ - [SDL2_Wiki](https://wiki.libsdl.org/SDL2/FrontPage)  
+ - [Lazy Foo' Production](https://lazyfoo.net/tutorials/SDL/index.php)  
+ - [Youtube và khóa học trên Udemy](https://www.youtube.com/)  
+ - Các tài nguyên khác trên internet
+
+## Tài Nguyên
+
+Tất cả tài nguyên được lưu trong thư mục `gfx`.
+
+Dưới đây là một số nguồn tôi sử dụng để tìm hình ảnh và âm thanh cho trò chơi:
+
+ - [Âm Thanh](https://www.youtube.com/playlist?list=PL7Ra2mJBhymKUGzbngs3rMRqFTb9EFOQG)  
+ - [Hình Ảnh](https://www.google.com/)  
+ - [Xóa Nền](https://www.remove.bg/)  
+ - [Ảnh tạo bởi AI](https://chatgpt.com/)
+
+...
+
+## Lời Cuối
+
+Cảm ơn bạn đã ghé qua **MiG Fury**!  
+Tôi thật sự biết ơn vì sự quan tâm và thời gian của bạn.  
+Hy vọng bạn sẽ có những phút giây chơi game đáng nhớ và thú vị.
+
+**Bầu trời là của bạn – chúc may mắn, phi công!**
